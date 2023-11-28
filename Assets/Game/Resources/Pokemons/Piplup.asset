@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e1f629cd5cb1d64fbc764ea2168806e, type: 3}
+  m_Name: Piplup
+  m_EditorClassIdentifier: 
+  name: Piplup
+  description: 
+  frontSprite: {fileID: 21300000, guid: 3746ea40b08063f458ca360742dadadd, type: 3}
+  backSprite: {fileID: 21300000, guid: afb12442c2d9721478629d3469a6f4f3, type: 3}
+  type1: 3
+  type2: 0
+  maxHp: 53
+  attack: 51
+  defense: 53
+  spAttack: 61
+  spDefense: 56
+  speed: 40
+  learnableMoves:
+  - moveBase: {fileID: 11400000, guid: 6de9488d94765b04ca776dc0383a5d0b, type: 2}
+    level: 1
+  - moveBase: {fileID: 11400000, guid: e88457f5c42e5204b879c0addaf0f765, type: 2}
+    level: 1
+  - moveBase: {fileID: 11400000, guid: ecf0dce3e1bb8f244be9a62ec1b2bc4b, type: 2}
+    level: 4
+  - moveBase: {fileID: 11400000, guid: 922ad7a314d5e8e46a47b044808a4331, type: 2}
+    level: 8
