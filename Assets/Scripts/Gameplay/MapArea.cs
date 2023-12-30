@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MapArea : MonoBehaviour
 {
-    [SerializeField] List<PokemonLevel> wildPokemons;
+    [SerializeField] List<Pokemon> wildPokemons;
 
-    public PokemonLevel GetRandomWildPokemon()
+    public Pokemon GetRandomWildPokemon()
     {
         //just have to initialize them in this function because they're only relevant in the battle
         var wildPokemon = wildPokemons[Random.Range(0, wildPokemons.Count)];

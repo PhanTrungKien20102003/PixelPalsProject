@@ -59,9 +59,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\Data\ConditionsDB.cs" />
+    <Compile Include="Assets\Scripts\Battle\PartyMemberUI.cs" />
     <Compile Include="Assets\Scripts\Battle\BattleSystem.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Pokemons\Conditions.cs" />
     <Compile Include="Assets\Scripts\Battle\HPBar.cs" />
+    <Compile Include="Assets\Scripts\Pokemons\Pokemon.cs" />
+    <Compile Include="Assets\Scripts\Battle\PartySlot.cs" />
     <Compile Include="Assets\Scripts\Battle\BattleHUD.cs" />
     <Compile Include="Assets\Scripts\Pokemons\PokemonParty.cs" />
     <Compile Include="Assets\Scripts\Battle\BattleDialogBox.cs" />
@@ -69,7 +74,6 @@
     <Compile Include="Assets\Scripts\Pokemons\MoveBase.cs" />
     <Compile Include="Assets\Scripts\Pokemons\Move.cs" />
     <Compile Include="Assets\Scripts\Pokemons\PokemonBase.cs" />
-    <Compile Include="Assets\Scripts\Pokemons\PokemonLevel.cs" />
     <Compile Include="Assets\Scripts\Gameplay\MapArea.cs" />
   </ItemGroup>
   <ItemGroup>

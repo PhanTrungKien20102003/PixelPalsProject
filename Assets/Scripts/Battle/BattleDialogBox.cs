@@ -77,6 +77,15 @@ public class BattleDialogBox : MonoBehaviour
         }
         ppText.text = $"PP: {move.PP}/{move.Base.PP}";
         typeText.text = move.Base.Type.ToString();
+
+        if (move.PP == 0) //set the PP text to red if the pokemon's PP has run out
+        {
+            ppText.color = Color.red;
+        }
+        else
+        {
+            ppText.color = Color.black;
+        }
     }
     public void SetMovesName(List <Move> moves)
     {

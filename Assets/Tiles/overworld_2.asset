@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: overworld_2
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 1119220498, guid: 7ecfddf673be0134cbe0dfc68643f00c, type: 3}
+  m_Sprite: {fileID: 671910368, guid: e0f1e2bfa9016df439edcc0ea9dbff65, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

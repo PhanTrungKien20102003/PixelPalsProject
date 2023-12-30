@@ -5,7 +5,12 @@ using UnityEngine;
 
 public class PokemonParty : MonoBehaviour
 {
-    [SerializeField] List <PokemonLevel> pokemons; //make it SerializedField so that I can set it from the Inspector
+    [SerializeField] List <Pokemon> pokemons; //make it SerializedField so that I can set it from the Inspector
+
+    public List<Pokemon> Pokemons
+    {
+        get { return pokemons; }
+    }
 
     private void Start()
     {
@@ -14,7 +19,7 @@ public class PokemonParty : MonoBehaviour
             pokemon.Init();
         }
     }
-    public PokemonLevel GetHealthyPokemon() //pass the first Pokemon in the party that isn't fainted
+    public Pokemon GetHealthyPokemon() //pass the first Pokemon in the party that isn't fainted
     {
         /*the Where() function will loop through the list of Pokemons we have and it will return the list of Pokemon
           which satisfies the conditions => return all the Pokemons that are not fainted in party*/

@@ -18,6 +18,11 @@ public class GameController : MonoBehaviour
 
     GameState state;
 
+    private void Awake()
+    {
+        ConditionsDB.Init();
+    }
+
     private void Start()
     {
         playerController.OnEncountered += StartBattle; /* subscribed to the event that has created and called new function

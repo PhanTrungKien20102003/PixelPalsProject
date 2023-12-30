@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 input; //move the player
 
     private Animator animator; //add animation to animator controller
+
     private void Awake() //add animator
     {
         animator = GetComponent<Animator>();
@@ -44,7 +45,7 @@ public class PlayerController : MonoBehaviour
                                                         when we're not moving */ 
                 animator.SetFloat("moveY", input.y);
 
-                var targetPos = transform.position; //current position of the player pluse the "input"
+                var targetPos = transform.position; //current position of the player plus the "input"
                 targetPos.x += input.x;
                 targetPos.y += input.y;
 

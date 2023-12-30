@@ -6,10 +6,19 @@ using DG.Tweening; //installing DoTween
 
 public class BattleUnit : MonoBehaviour
 {
-    
     [SerializeField] bool isPlayerUnit; //identify if its a player's Pokemon or opponent's Pokemon
+    [SerializeField] BattleHUD hud;
+    public bool IsPlayerUnit
+    {
+        get { return isPlayerUnit; }
+    }
 
-    public PokemonLevel Pokemon { get; set; } 
+    public BattleHUD HUD
+    {
+        get { return hud; }
+    }
+
+    public Pokemon Pokemon { get; set; } 
 
     Image image;
     Vector3 originalPos; //variable to store original position of the image 
@@ -23,7 +32,7 @@ public class BattleUnit : MonoBehaviour
         originalColor = image.color;
     }
 
-    public void Setup(PokemonLevel pokemon) //public functions that will create a Pokemon from the base and it level
+    public void Setup(Pokemon pokemon) //public functions that will create a Pokemon from the base and it level
                                             //set the Pokemon dynamically
     {
         Pokemon = pokemon;
@@ -31,6 +40,8 @@ public class BattleUnit : MonoBehaviour
            image.sprite = Pokemon.Base.BackSprite;
         else
            image.sprite = Pokemon.Base.FrontSprite;
+
+        hud.SetData(pokemon);
 
         image.color = originalColor; //reset the color image after the alpha was faded to 0 which is fainted
         PlayEnterAnimation();

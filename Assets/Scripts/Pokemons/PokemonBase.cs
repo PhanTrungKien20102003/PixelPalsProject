@@ -132,6 +132,20 @@ public class PokemonBase : ScriptableObject
         Steel,
         Fairy
     }
+
+    public enum Stat
+    {
+        Attack,
+        Defense,
+        SpAttack,
+        SpDefense,
+        Speed,
+
+        //these are not 2 actual stats, they're used to boost the moveAccuracy
+        Accuracy,
+        Evasion
+    }
+
     public class TypeChart
     {
         static float[][] chart = //use static to use directly from the class without creating an object
