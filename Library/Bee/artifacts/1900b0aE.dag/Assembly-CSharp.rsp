@@ -387,16 +387,22 @@
 "Assets/Scripts/Battle/HPBar.cs"
 "Assets/Scripts/Battle/PartyMemberUI.cs"
 "Assets/Scripts/Battle/PartySlot.cs"
+"Assets/Scripts/Characters/CharactersAnimator.cs"
+"Assets/Scripts/Characters/NPCController.cs"
+"Assets/Scripts/Characters/PlayerController.cs"
 "Assets/Scripts/Data/ConditionsDB.cs"
 "Assets/Scripts/GameController.cs"
+"Assets/Scripts/Gameplay/Dialog.cs"
+"Assets/Scripts/Gameplay/DialogManager.cs"
+"Assets/Scripts/Gameplay/Interactable.cs"
 "Assets/Scripts/Gameplay/MapArea.cs"
-"Assets/Scripts/Player/PlayerController.cs"
 "Assets/Scripts/Pokemons/Conditions.cs"
 "Assets/Scripts/Pokemons/Move.cs"
 "Assets/Scripts/Pokemons/MoveBase.cs"
 "Assets/Scripts/Pokemons/Pokemon.cs"
 "Assets/Scripts/Pokemons/PokemonBase.cs"
 "Assets/Scripts/Pokemons/PokemonParty.cs"
+"Assets/Scripts/Util/SpriteAnimator.cs"
 -langversion:9.0
 
 /deterministic

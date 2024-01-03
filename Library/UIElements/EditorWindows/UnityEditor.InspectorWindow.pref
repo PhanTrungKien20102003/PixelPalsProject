@@ -30,6 +30,7 @@ MonoBehaviour:
   - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-m_Panes__UnityEngine.UIElements.ListView
   - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-secondary__UnityEngine.UIElements.ListView
   - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-secondary__unity-list-secondary.Array.data[0].boosts__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-dialog.lines__UnityEngine.UIElements.ListView
   m_Values:
   - '{}'
   - '{}'
@@ -42,6 +43,7 @@ MonoBehaviour:
   - '{}'
   - '{}'
   - '{"m_ShowAlternatingRowBackgrounds":0,"serializedVirtualizationData":{"scrollOffset":{"x":0.0,"y":0.0},"firstVisibleIndex":0,"contentPadding":0.0,"contentHeight":364.79998779296877,"anchoredItemIndex":0,"anchorOffset":0.0}}'
+  - '{}'
   - '{}'
   - '{}'
   - '{}'

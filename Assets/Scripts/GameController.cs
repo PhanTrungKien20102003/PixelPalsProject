@@ -7,7 +7,7 @@ using UnityEngine;
     - Have a game controller inside which will store the GameState -- GameState = FreeRoam, Battle, etc.
         +) Depending upon the state, we will give the controller to either Player Controller or Battle System 
         => Both of them can't have the control at the same time. */
-public enum GameState { FreeRoam, Battle}
+public enum GameState { FreeRoam, Battle, Dialog}
 public class GameController : MonoBehaviour
 {
     //references for both Player and Battle
@@ -27,7 +27,20 @@ public class GameController : MonoBehaviour
     {
         playerController.OnEncountered += StartBattle; /* subscribed to the event that has created and called new function
                                                          "StartBattle" when this event is fired */
-        battleSystem.OnBattleOver += EndBattle; 
+        battleSystem.OnBattleOver += EndBattle;
+
+        DialogManager.Instance.OnShowDialog += () => //subscribe to the OnShowDialog event 
+        {
+            state = GameState.Dialog;
+        };
+        DialogManager.Instance.OnCloseDialog += () => //subscribe to the OnCloseDialog event 
+        {
+            if (state == GameState.Dialog)
+            {
+                state = GameState.FreeRoam;
+            }
+            
+        };
     }
     void StartBattle()
     {
@@ -56,6 +69,10 @@ public class GameController : MonoBehaviour
         else if (state == GameState.Battle)
         {
             battleSystem.HandleUpdate();
+        }
+        else if (state == GameState.Dialog) //disable player movement when talking to NPCs (show dialog)
+        {
+            DialogManager.Instance.HandleUpdate();
         }
     }
 }
