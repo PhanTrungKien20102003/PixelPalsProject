@@ -73,4 +73,4 @@ crashlytics-build.properties
 
 # Exclude Scripts folder
 # Comment the next line if you want to include the Scripts folder
-/[Aa]ssets/[Ss]cripts/
+#/[Aa]ssets/[Ss]cripts/
