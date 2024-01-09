@@ -71,6 +71,3 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-# Exclude Scripts folder
-# Comment the next line if you want to include the Scripts folder
-#/[Aa]ssets/[Ss]cripts/

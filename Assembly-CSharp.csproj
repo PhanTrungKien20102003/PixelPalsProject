@@ -68,7 +68,9 @@
     <Compile Include="Assets\Scripts\Characters\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Battle\PartySlot.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Interactable.cs" />
+    <Compile Include="Assets\Scripts\Characters\Character.cs" />
     <Compile Include="Assets\Scripts\Battle\BattleHUD.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\GameLayers.cs" />
     <Compile Include="Assets\Scripts\Pokemons\PokemonParty.cs" />
     <Compile Include="Assets\Scripts\Battle\BattleDialogBox.cs" />
     <Compile Include="Assets\Scripts\Battle\BattleUnit.cs" />
