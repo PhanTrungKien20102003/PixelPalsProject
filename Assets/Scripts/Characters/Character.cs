@@ -31,8 +31,8 @@ public class Character : MonoBehaviour
         targetPos.x += moveVector.x;
         targetPos.y += moveVector.y;
 
-        //if target position is a walkable tile -> execute moving code below
-        if(!IsWalkable(targetPos))
+        //if target position is a walkable tile and don't have objects next to -> execute moving code below
+        if(!IsPathClear(targetPos))
             yield break;
 
         //moving character to target position 
@@ -58,6 +58,19 @@ public class Character : MonoBehaviour
     public void HandleUpdate()
     {
         animator.IsMoving = IsMoving;
+    }
+
+    private bool IsPathClear(Vector3 targetPos)
+    {
+        var diff = targetPos - transform.position;
+        var dir = diff.normalized; //return another vector with same direction as "diff" but the length will be 1
+
+        if (Physics2D.BoxCast(transform.position + dir, new Vector2(0.2f, 0.2f), 0f, dir, diff.magnitude - 1, 
+            GameLayers.Instance.SolidLayer | GameLayers.Instance.InteractableLayer | GameLayers.Instance.PlayerLayer) == true)
+        {
+            return false;
+        }
+        return true;
     }
 
     private bool IsWalkable(Vector3 targetPos) //take the target position and check if that tile at that position is walkable

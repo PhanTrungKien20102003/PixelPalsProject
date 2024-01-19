@@ -13895,11 +13895,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 835847488449805376, guid: 41862a1043c727b4aab4581fd0d7716f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.78
+      value: -2.31
       objectReference: {fileID: 0}
     - target: {fileID: 835847488449805376, guid: 41862a1043c727b4aab4581fd0d7716f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.44
+      value: -1.36
       objectReference: {fileID: 0}
     - target: {fileID: 835847488449805376, guid: 41862a1043c727b4aab4581fd0d7716f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13939,12 +13939,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4452521053757187010, guid: 41862a1043c727b4aab4581fd0d7716f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5913960340778162475, guid: 41862a1043c727b4aab4581fd0d7716f, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -2086453454, guid: 8e9b448610a64a3489379218600bdf89, type: 3}
+    - target: {fileID: 5930231826434833857, guid: 41862a1043c727b4aab4581fd0d7716f, type: 3}
+      propertyPath: timeBetweenPattern
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5930231826434833857, guid: 41862a1043c727b4aab4581fd0d7716f, type: 3}
       propertyPath: dialog.lines.Array.size
       value: 2
@@ -13957,11 +13961,71 @@ PrefabInstance:
       propertyPath: dialog.lines.Array.data[1]
       value: It makes me feel comfortable!
       objectReference: {fileID: 0}
+    - target: {fileID: 5930231826434833857, guid: 41862a1043c727b4aab4581fd0d7716f, type: 3}
+      propertyPath: movementPattern.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5930231826434833857, guid: 41862a1043c727b4aab4581fd0d7716f, type: 3}
+      propertyPath: movementPattern.Array.data[0].x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5930231826434833857, guid: 41862a1043c727b4aab4581fd0d7716f, type: 3}
+      propertyPath: movementPattern.Array.data[1].x
+      value: -2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4452521053757187010, guid: 41862a1043c727b4aab4581fd0d7716f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 585622755}
+    - targetCorrespondingSourceObject: {fileID: 4452521053757187010, guid: 41862a1043c727b4aab4581fd0d7716f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 585622756}
   m_SourcePrefab: {fileID: 100100000, guid: 41862a1043c727b4aab4581fd0d7716f, type: 3}
+--- !u!1 &585622754 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4452521053757187010, guid: 41862a1043c727b4aab4581fd0d7716f, type: 3}
+  m_PrefabInstance: {fileID: 585622753}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &585622755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 585622754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82e43748aaeadb943801d06f63480b5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+--- !u!114 &585622756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 585622754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e4c4a083daf28409b072456657a99a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkDownSprites: []
+  walkUpSprites: []
+  walkLeftSprites:
+  - {fileID: 179846949, guid: 8e9b448610a64a3489379218600bdf89, type: 3}
+  - {fileID: -1269558059, guid: 8e9b448610a64a3489379218600bdf89, type: 3}
+  - {fileID: 890782229, guid: 8e9b448610a64a3489379218600bdf89, type: 3}
+  - {fileID: 1117534881, guid: 8e9b448610a64a3489379218600bdf89, type: 3}
+  walkRightSprites:
+  - {fileID: 1502585946, guid: 8e9b448610a64a3489379218600bdf89, type: 3}
+  - {fileID: -1737057241, guid: 8e9b448610a64a3489379218600bdf89, type: 3}
+  - {fileID: -1658198436, guid: 8e9b448610a64a3489379218600bdf89, type: 3}
+  - {fileID: -398103196, guid: 8e9b448610a64a3489379218600bdf89, type: 3}
 --- !u!1001 &648286301
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14274,6 +14338,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 448916242, guid: ce3755232077b884ba4c309e50468d86, type: 3}
+    - target: {fileID: 5930231826434833857, guid: 41862a1043c727b4aab4581fd0d7716f, type: 3}
+      propertyPath: timeBetweenPattern
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5930231826434833857, guid: 41862a1043c727b4aab4581fd0d7716f, type: 3}
       propertyPath: dialog.lines.Array.size
       value: 2
@@ -14626,6 +14694,9 @@ MonoBehaviour:
   interactableLayer:
     serializedVersion: 2
     m_Bits: 256
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &991065106
 GameObject:
   m_ObjectHideFlags: 0
@@ -33957,7 +34028,7 @@ GameObject:
   - component: {fileID: 2140203058}
   - component: {fileID: 2140203061}
   - component: {fileID: 2140203062}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -34122,7 +34193,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2140203052}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

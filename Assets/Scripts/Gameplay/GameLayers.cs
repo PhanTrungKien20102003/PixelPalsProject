@@ -10,6 +10,7 @@ public class GameLayers : MonoBehaviour
 
     [SerializeField] LayerMask interactableLayer; //variable to talk with NPCs
 
+    [SerializeField] LayerMask playerLayer; //variable for NPCs to not walk through player
 
     //use singleton pattern so that this script can easily be accessed from any other script
     public static GameLayers Instance { get; set; }
@@ -28,5 +29,9 @@ public class GameLayers : MonoBehaviour
     public LayerMask InteractableLayer
     {
         get => interactableLayer;
+    }
+    public LayerMask PlayerLayer
+    {
+        get => playerLayer;
     }
 }

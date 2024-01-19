@@ -22,13 +22,17 @@ public class DialogManager : MonoBehaviour
     }
 
     Dialog dialog; //show dialog in a global object
+    Action onDialogFinished; //check if the dialog has finished yet or not
+
     int currentLine = 0; //variable to store the current line of the dialog
     bool isTyping; //check for the user press "Space" key while the first dialog is still running
 
     public bool IsShowing {  get; private set; } //stop the NPC moving around when the dialog is showing
 
-    public IEnumerator ShowDialog(Dialog dialog)
-    {
+    public IEnumerator ShowDialog(Dialog dialog, Action onFinished = null )
+    {                                             //check if the dialog has finished yet or not
+
+
         /* When reach the end of Update() function, the "Space" key will still be pressed
         --> Because doing all this in the same frame in which user try to interact with the NPC*/
 
@@ -39,6 +43,8 @@ public class DialogManager : MonoBehaviour
 
         IsShowing = true;
         this.dialog = dialog;
+        onDialogFinished = onFinished;
+
         dialogBox.SetActive(true);
         StartCoroutine(TypeDialog(dialog.Lines[0])); //show the first line of the dialog
     }
@@ -57,6 +63,7 @@ public class DialogManager : MonoBehaviour
                 currentLine = 0; //next time start a dialog, starts from zero
                 IsShowing = false;
                 dialogBox.SetActive(false);
+                onDialogFinished?.Invoke();
                 OnCloseDialog?.Invoke();
             }
         }

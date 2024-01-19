@@ -24,13 +24,17 @@ public class NPCController : MonoBehaviour, Interactable
     {
         //can only interact with NPC when the NPC is in the Idle state, won't be able to talk when walking
         if (state == NPCState.Idle)
-            StartCoroutine(DialogManager.Instance.ShowDialog(dialog));
+        {
+            state = NPCState.Dialog;
+            StartCoroutine(DialogManager.Instance.ShowDialog(dialog, () =>
+            {
+                idleTimer = 0f; //set to 0 to not use any previously stored value
+                state = NPCState.Idle;
+            }));
+        }
     }
     private void Update()
     {
-        if (DialogManager.Instance.IsShowing) //if the dialog is currently being shown -> none of the code below will be executed
-            return;
-
         if (state == NPCState.Idle)
         {
             idleTimer += Time.deltaTime;
@@ -57,6 +61,7 @@ public class NPCController : MonoBehaviour, Interactable
     public enum NPCState //make the NPCs walk in a pattern that I specify
     {
         Idle,
-        Walking
+        Walking,
+        Dialog
     }
 }
