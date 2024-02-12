@@ -41,10 +41,17 @@ public class BattleUnit : MonoBehaviour
         else
            image.sprite = Pokemon.Base.FrontSprite;
 
+        hud.gameObject.SetActive(true);
         hud.SetData(pokemon);
 
+        transform.localScale = new Vector3(1, 1, 1);
         image.color = originalColor; //reset the color image after the alpha was faded to 0 which is fainted
         PlayEnterAnimation();
+    }
+
+    public void Clear()
+    {
+        hud.gameObject.SetActive(false);
     }
     public void PlayEnterAnimation() //when encouting a battle, the Pokemon will appear from the outside into the battle
     {
@@ -99,5 +106,29 @@ public class BattleUnit : MonoBehaviour
         
         sequence.Join(image.DOFade(0f, 0.5f)); /*I'm using Join() because it will not start playing the fade animation
                                                  if the first animation isn't complete. I want both of them to play together*/
+    }
+
+    public IEnumerator PlayCaptureAnimation()
+    {
+        var sequence = DOTween.Sequence();
+        sequence.Append(image.DOFade(0, 0.5f)); /* move the unit up and fade its alpha
+                                                                                    to 0 */
+
+        sequence.Join(transform.DOLocalMoveY(originalPos.y + 50f, 0.5f)); /*I'm using Join() because it will not start playing the fade animation
+                                                 if the first animation isn't complete. I want both of them to play together*/
+        sequence.Join(transform.DOScale(new Vector3(0.3f, 0.3f, 1f), 0.5f));
+        yield return sequence.WaitForCompletion();
+    }
+    
+    public IEnumerator PlayBreakOutAnimation()
+    {
+        var sequence = DOTween.Sequence();
+        sequence.Append(image.DOFade(1, 0.5f)); /* move the unit up and fade its alpha
+                                                                                    to 0 */
+
+        sequence.Join(transform.DOLocalMoveY(originalPos.y , 0.5f)); /*I'm using Join() because it will not start playing the fade animation
+                                                 if the first animation isn't complete. I want both of them to play together*/
+        sequence.Join(transform.DOScale(new Vector3(1f, 1f, 1f), 0.5f));
+        yield return sequence.WaitForCompletion();
     }
 }

@@ -26,4 +26,14 @@ public class PokemonParty : MonoBehaviour
         return pokemons.Where(x => x.HP > 0).FirstOrDefault(); 
                                             //just need the first one that isn't fainted so I used FirstOrDefault()
     }
+
+    public void AddPokemon(Pokemon newPokemon)
+    {
+        if (pokemons.Count < 6)
+            pokemons.Add(newPokemon);
+        else
+        {
+            // TODO: Add PC once that implemented
+        }
+    }
 }

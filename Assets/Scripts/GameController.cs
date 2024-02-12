@@ -7,7 +7,7 @@ using UnityEngine;
     - Have a game controller inside which will store the GameState -- GameState = FreeRoam, Battle, etc.
         +) Depending upon the state, we will give the controller to either Player Controller or Battle System 
         => Both of them can't have the control at the same time. */
-public enum GameState { FreeRoam, Battle, Dialog}
+public enum GameState { FreeRoam, Battle, Dialog, CutScene}
 public class GameController : MonoBehaviour
 {
     //references for both Player and Battle
@@ -17,9 +17,12 @@ public class GameController : MonoBehaviour
     [SerializeField] Camera worldCamera; //reference for main camera
 
     GameState state;
+    
+    public static GameController Instance { get; private set; }
 
     private void Awake()
     {
+        Instance = this;
         ConditionsDB.Init();
     }
 
@@ -28,7 +31,16 @@ public class GameController : MonoBehaviour
         playerController.OnEncountered += StartBattle; /* subscribed to the event that has created and called new function
                                                          "StartBattle" when this event is fired */
         battleSystem.OnBattleOver += EndBattle;
-
+        playerController.OnEnterTrainersView += (Collider2D trainerCollider) =>
+        {
+            var trainer = trainerCollider.GetComponentInParent<TrainerController>();
+            if (trainer != null)
+            {
+                state = GameState.CutScene;
+                StartCoroutine(trainer.TriggerTrainerBattle(playerController));
+            }
+        };
+        
         DialogManager.Instance.OnShowDialog += () => //subscribe to the OnShowDialog event 
         {
             state = GameState.Dialog;
@@ -51,10 +63,32 @@ public class GameController : MonoBehaviour
         var playerParty = playerController.GetComponent<PokemonParty>();
         var wildPokemon = FindObjectOfType<MapArea>().GetComponent<MapArea>().GetRandomWildPokemon();
 
+        var wildPokemonCopy = new Pokemon(wildPokemon.Base, wildPokemon.Level);
+
         battleSystem.StartBattle(playerParty, wildPokemon); //will be called everytime encountered a new battle
+    }
+
+    private TrainerController trainer;
+    public void StartTrainerBattle(TrainerController trainer)
+    {
+        state = GameState.Battle;
+        battleSystem.gameObject.SetActive(true);
+        worldCamera.gameObject.SetActive(false);
+
+        this.trainer = trainer;
+        var playerParty = playerController.GetComponent<PokemonParty>();
+        var trainerParty = trainer.GetComponent<PokemonParty>();
+
+        battleSystem.StartTrainerBattle(playerParty, trainerParty); //will be called everytime encountered a new battle
     }
     void EndBattle(bool won)
     {
+        if (trainer != null && won == true)
+        {
+            trainer.BattleLost();
+            trainer = null;
+        }
+        
         state = GameState.FreeRoam;
         battleSystem.gameObject.SetActive(false);
         worldCamera.gameObject.SetActive(true);

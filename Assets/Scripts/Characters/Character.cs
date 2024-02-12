@@ -86,6 +86,21 @@ public class Character : MonoBehaviour
         return true;
     }
 
+    //NPCs will face toward the Player when talking
+    public void LookTowards(Vector3 targetPos)
+    {
+        //find the different between x and y coordinates of the position of the character and the target position
+        var xDiff = Mathf.Floor(targetPos.x) - Mathf.Floor(transform.position.x); //store the different in the x coordinate
+        var yDiff = Mathf.Floor(targetPos.y) - Mathf.Floor(transform.position.y); //store the different in the y coordinate
+
+        if (xDiff == 0 || yDiff == 0)
+        {
+            animator.MoveX = Mathf.Clamp(xDiff, -1f, 1f); 
+            animator.MoveY = Mathf.Clamp(yDiff, -1f, 1f);
+        }
+        else
+            Debug.Log("Error in Look Towards: You can't ask the character to look diagonally!");
+    }
     public CharactersAnimator Animator {
         get => animator;
     }

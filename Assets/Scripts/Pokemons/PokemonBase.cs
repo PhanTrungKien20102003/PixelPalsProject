@@ -31,6 +31,8 @@ public class PokemonBase : ScriptableObject
     [SerializeField] int spDefense;
     [SerializeField] int speed;
 
+    [SerializeField] int catchRate = 255;
+
     [SerializeField] List<LearnableMove> learnableMoves; /* I prefer using list than array although they almost like the same
                                                             but it comes with some more predefined functions which will be useful */
 
@@ -89,6 +91,7 @@ public class PokemonBase : ScriptableObject
     {
         get { return learnableMoves; }
     }
+    public int CatchRate => catchRate;
 
     [System.Serializable]
     public class LearnableMove //store list of moves the pokemon can learn and the level at which it will learn them all
@@ -108,7 +111,7 @@ public class PokemonBase : ScriptableObject
         }
     }
 
-    public enum PokemonType /* Enum represents different types of Pokémon. Each Pokémon type is assigned a distinct constant value, 
+    public enum PokemonType /* Enum represents different types of Pokï¿½mon. Each Pokï¿½mon type is assigned a distinct constant value, 
                                starting from 0 for the first value and incrementing sequentially 
                                It makes the code more readable and reducing the risk of errors when working with related values */
     {

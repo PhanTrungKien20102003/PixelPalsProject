@@ -15,17 +15,20 @@ public class NPCController : MonoBehaviour, Interactable
     float idleTimer = 0f; //keep track the time when NPC walk
     int currentPattern = 0;
 
-    Character charater;
+    Character character;
     private void Awake()
     {
-        charater = GetComponent<Character>();
+        character = GetComponent<Character>();
     }
-    public void Interact()
+
+                        //the Transform of the Game Object that initiated the interaction. In this case, it's the transform of the player
+    public void Interact(Transform initiator)
     {
         //can only interact with NPC when the NPC is in the Idle state, won't be able to talk when walking
         if (state == NPCState.Idle)
         {
             state = NPCState.Dialog;
+            character.LookTowards(initiator.position);
             StartCoroutine(DialogManager.Instance.ShowDialog(dialog, () =>
             {
                 idleTimer = 0f; //set to 0 to not use any previously stored value
@@ -45,15 +48,23 @@ public class NPCController : MonoBehaviour, Interactable
                     StartCoroutine(Walk());
             }
         }
-        charater.HandleUpdate();
+        character.HandleUpdate();
     }
 
     IEnumerator Walk()
     {
         state = NPCState.Walking;
 
-        yield return charater.Move(movementPattern[currentPattern]); //moving the NPC
-        currentPattern = (currentPattern + 1) % movementPattern.Count; //when reach the last pattern, go back to the first pattern
+        /*if the path is not clear -> NPC must not skip to the next pattern
+         => if it skips a pattern, it'll walk in a pattern that different from the one specified 
+                => don't have control over where all the NPCs can go */
+
+        var oldPos = transform.position; //check if NPC actually walked in the previous pattern
+
+        yield return character.Move(movementPattern[currentPattern]); //moving the NPC
+
+        if (transform.position != oldPos)
+            currentPattern = (currentPattern + 1) % movementPattern.Count; //when reach the last pattern, go back to the first pattern
 
         state = NPCState.Idle;
     }

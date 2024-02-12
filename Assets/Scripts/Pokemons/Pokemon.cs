@@ -13,6 +13,15 @@ public class Pokemon
 {
     [SerializeField] PokemonBase _base;
     [SerializeField] int level;
+
+    public Pokemon(PokemonBase pBase, int pLevel)
+    {
+        _base = pBase;
+        level = pLevel;
+        
+        Init();
+    }
+    
     public PokemonBase Base 
     {
         get
@@ -51,7 +60,7 @@ public class Pokemon
     /* use to store a list of element same as the list but the difference is 
        you can take out elements from the queue in the order in which add it 
        to the queue */
-    public Queue <string> StatusChanges { get; private set; } = new Queue<string>();
+    public Queue <string> StatusChanges { get; private set; }
 
     public bool HPChanged { get; set; }
 
@@ -73,6 +82,7 @@ public class Pokemon
         CalculateStats();
         HP = MaxHp;
 
+        StatusChanges = new Queue<string>();
         ResetStatusBoost();
         Status = null;
         VolatileStatus = null;

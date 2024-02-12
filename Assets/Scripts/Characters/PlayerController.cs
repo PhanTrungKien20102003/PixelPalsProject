@@ -5,8 +5,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] string name;
+    [SerializeField] Sprite sprite;
+    
     public event Action OnEncountered; //import "System" namespace
-
+    public event Action <Collider2D> OnEnterTrainersView;
+    
     private Vector2 input; //move the player
 
     private Character character; //reference to Character script
@@ -32,7 +36,7 @@ public class PlayerController : MonoBehaviour
 
             if (input != Vector2.zero) //if input isn't 0, set moveX and moveY parameter of animation
             {
-                StartCoroutine(character.Move(input, CheckForEncounters));
+                StartCoroutine(character.Move(input, OnMoveOver));
             }
         }
         character.HandleUpdate();
@@ -50,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
         if (collider != null)
         {
-            collider.GetComponent<Interactable>()?.Interact();
+            collider.GetComponent<Interactable>()?.Interact(transform);
         }
     }
 
@@ -78,6 +82,11 @@ public class PlayerController : MonoBehaviour
         that it happened.
  */
 
+    private void OnMoveOver()
+    {
+        CheckForEncounters();
+        CheckIfInTrainerView();
+    }
     private void CheckForEncounters() //this function will handle the battle triggering logic
     {
         if (Physics2D.OverlapCircle(transform.position, 0.2f, GameLayers.Instance.GrassLayer) != null) //check if the tile when the player move into is actually a grass tile 
@@ -92,4 +101,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void CheckIfInTrainerView()
+    {
+        var collider = Physics2D.OverlapCircle(transform.position, 0.2f, GameLayers.Instance.FOVLayer);
+        if (collider != null)
+        {
+            character.Animator.IsMoving = false;
+            OnEnterTrainersView?.Invoke(collider);
+        }
+    }
+    public string Name
+    {
+        get => name;
+    }
+
+    public Sprite Sprite
+    {
+        get => sprite;  
+    }
 }

@@ -150,6 +150,18 @@ public class ConditionsDB //store instances of Conditions class
             }
         },
     };
+
+    public static float GetStatusBonus(Conditions conditions)
+    {
+        if (conditions == null)
+            return 1f;
+        else if (conditions.id == ConditionID.SLP || conditions.id == ConditionID.FRZ)
+            return 2f;
+        else if (conditions.id == ConditionID.PSN || conditions.id == ConditionID.PAR || conditions.id == ConditionID.BRN)
+            return 1.5f;
+
+        return 1f;
+    }
 }
 public enum ConditionID
 {

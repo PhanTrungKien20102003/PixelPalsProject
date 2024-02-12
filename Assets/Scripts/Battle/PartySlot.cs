@@ -14,7 +14,7 @@ public class PartySlot : MonoBehaviour
     {
         /*this function will return all the party member UI Components that are attached to the child objects of the party screen
         => Don't have to assign one-by-one from the inspector and don't have to worry in case changing number of members that allow in party */
-        memberSlots = GetComponentsInChildren<PartyMemberUI>();
+        memberSlots = GetComponentsInChildren<PartyMemberUI>(true);
     }
 
     public void SetPartyData(List <Pokemon> pokemons)
@@ -25,6 +25,7 @@ public class PartySlot : MonoBehaviour
         {
             if (i < pokemons.Count) 
             {
+                memberSlots[i].gameObject.SetActive(true);
                 memberSlots[i].SetData(pokemons[i]); //set the data of pokemon into the member slot and passing pokemon at that index
             } else
             {

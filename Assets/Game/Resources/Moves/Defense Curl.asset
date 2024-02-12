@@ -16,12 +16,17 @@ MonoBehaviour:
   description: 
   type: 1
   power: 0
-  accuracy: 0
+  accuracy: 100
+  alwaysHit: 0
   pp: 40
+  priority: 0
   category: 2
   effects:
     boosts:
     - stat: 1
       boost: 1
+    status: 0
+    volatileStatus: 0
+  secondary: []
   target: 1
   isSpecial: 0

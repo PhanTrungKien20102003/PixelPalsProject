@@ -13,6 +13,7 @@ public class BattleDialogBox : MonoBehaviour
     [SerializeField] GameObject actionSelector;
     [SerializeField] GameObject moveSelector;
     [SerializeField] GameObject moveDetails;
+    [SerializeField] GameObject choiceBox;
 
     [SerializeField] List<TextMeshProUGUI> actionTexts;/* used List for both of these because I want the player to select
                                                          different actions and moves */
@@ -21,7 +22,8 @@ public class BattleDialogBox : MonoBehaviour
     [SerializeField] TextMeshProUGUI ppText;
     [SerializeField] TextMeshProUGUI typeText;
 
-
+    [SerializeField] TextMeshProUGUI yesText;
+    [SerializeField] TextMeshProUGUI noText;
     //set a dialog to the text
     public void SetDialog(string dialog)
     {
@@ -53,6 +55,11 @@ public class BattleDialogBox : MonoBehaviour
     {
         moveSelector.SetActive(enabled);
         moveDetails.SetActive(enabled);
+    }
+    
+    public void EnableChoiceBox(bool enabled)
+    {
+        choiceBox.SetActive(enabled);
     }
 
     //update the selection in the UI
@@ -95,6 +102,20 @@ public class BattleDialogBox : MonoBehaviour
                 moveTexts[i].text = moves[i].Base.Name;
             else
                 moveTexts[i].text = "-";
+        }
+    }
+    
+    public void UpdateChoiceBox(bool yesSelected)
+    {
+        if (yesSelected)
+        {
+            yesText.color = highlightedColor;
+            noText.color = Color.black;
+        }
+        else
+        {
+            yesText.color = Color.black;
+            noText.color = highlightedColor;
         }
     }
 }
