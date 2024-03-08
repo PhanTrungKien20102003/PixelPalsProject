@@ -46,11 +46,14 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\Saving\ISavable.cs" />
      <Compile Include="Assets\Scripts\Data\ConditionsDB.cs" />
      <Compile Include="Assets\Scripts\Core\Tilemap.cs" />
      <Compile Include="Assets\Scripts\Core\Fader.cs" />
+     <Compile Include="Assets\Scripts\Data\PokemonDB.cs" />
      <Compile Include="Assets\Scripts\Core\EssentialObjectsSpawner.cs" />
      <Compile Include="Assets\Scripts\Battle\PartyMemberUI.cs" />
+     <Compile Include="Assets\Scripts\Data\MoveDB.cs" />
      <Compile Include="Assets\Scripts\Characters\TrainerController.cs" />
      <Compile Include="Assets\Scripts\Battle\MoveSelectionUI.cs" />
      <Compile Include="Assets\Scripts\Battle\BattleSystem.cs" />
@@ -77,9 +80,11 @@
      <Compile Include="Assets\Scripts\Core\EssentialObjects.cs" />
      <Compile Include="Assets\Scripts\Gameplay\DialogManager.cs" />
      <Compile Include="Assets\Scripts\Characters\CharactersAnimator.cs" />
+     <Compile Include="Assets\Scripts\Saving\SavingSystem.cs" />
      <Compile Include="Assets\Scripts\Gameplay\IPlayerTriggerable.cs" />
      <Compile Include="Assets\Scripts\Characters\NPCController.cs" />
      <Compile Include="Assets\Scripts\Gameplay\Dialog.cs" />
+     <Compile Include="Assets\Scripts\Saving\SavableEntity.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets\Game\Resources\Moves" />
      <Folder Include="Assets\Game\Resources" />
@@ -127,9 +132,11 @@
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
      <Folder Include="Assets\Scripts\SceneManagement" />
      <Folder Include="Assets\Game\Items" />
+     <Folder Include="Assets\Scripts\Saving" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
      <Folder Include="Assets\Prefabs" />
      <Folder Include="Assets\Art\gfx" />
+     <Folder Include="Assets\Game\Characters" />
      <Folder Include="Assets\Scripts\Pokemons" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
      <Folder Include="Assets\Art" />

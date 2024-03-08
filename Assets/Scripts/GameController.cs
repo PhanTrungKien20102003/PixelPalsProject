@@ -25,6 +25,9 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+
+        PokemonDB.Init();
+        MoveDB.Init();
         ConditionsDB.Init();
     }
 
@@ -109,6 +112,15 @@ public class GameController : MonoBehaviour
                                             otherwise, if the state is Battle, give the control to Battle System */
         {
             playerController.HandleUpdate();
+
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                SavingSystem.instance.Save("saveSlot1");
+            }
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                SavingSystem.instance.Load("saveSlot1");
+            }
         }
         else if (state == GameState.Battle)
         {

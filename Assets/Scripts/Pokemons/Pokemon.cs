@@ -61,7 +61,7 @@ public class Pokemon
     /* use to store a list of element same as the list but the difference is 
        you can take out elements from the queue in the order in which add it 
        to the queue */
-    public Queue <string> StatusChanges { get; private set; }
+    public Queue<string> StatusChanges { get; private set; }
 
     public bool HPChanged { get; set; }
 
@@ -92,6 +92,40 @@ public class Pokemon
         VolatileStatus = null;
     }
 
+    public Pokemon(PokemonSaveData saveData)
+    {
+        _base = PokemonDB.GetPokemonByName(saveData.name);
+        HP = saveData.hp;
+        level = saveData.level;
+        Exp = saveData.exp;
+
+        if (saveData.statusID != null)
+            Status = ConditionsDB.Conditions[saveData.statusID.Value];
+        else
+            Status = null;
+
+        Moves = saveData.moves.Select(s => new Move(s)).ToList();
+        
+        CalculateStats();
+        StatusChanges = new Queue<string>();
+        ResetStatusBoost();
+        VolatileStatus = null;
+    }
+    
+    public PokemonSaveData GetSaveData()
+    {
+        var saveData = new PokemonSaveData()
+        {
+            name = Base.Name,
+            hp = HP,
+            level = Level,
+            exp = Exp,
+            statusID = Status?.id,
+            moves = Moves.Select(m => m.GetSaveData()).ToList()
+        };
+        return saveData;
+    }
+    
     void CalculateStats()
     {
         Stats = new Dictionary<Stat, int>();
@@ -341,4 +375,15 @@ public class DamageDetails
     public bool Fainted { get; set; }
     public float Critical { get; set; }
     public float TypeEffectiveness { get; set; }
+}
+
+[System.Serializable]
+public class PokemonSaveData
+{
+    public string name;
+    public int hp;
+    public int level;
+    public int exp;
+    public ConditionID? statusID;
+    public List<MoveSaveData> moves;
 }

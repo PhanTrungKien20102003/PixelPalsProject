@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, ISavable
 {
     [SerializeField] string name;
     [SerializeField] Sprite sprite;
@@ -104,4 +105,39 @@ public class PlayerController : MonoBehaviour
         get => sprite;  
     }
     public Character Character => character;
+    public object CaptureState()
+    {
+        var saveData = new PlayerSaveData()
+        {
+            position = new float[] { transform.position.x, transform.position.y },
+            pokemons = GetComponent<PokemonParty>().Pokemons.Select(p => p.GetSaveData()).ToList()
+        };
+        return saveData;
+        
+        
+        /*the position is the Vector 3 class -> while using a saving system, can only use classes that are serializable.
+          Only then, the saving system will know how to convert that class into binary.
+          So I have to convert vector 3 into some other form which I can save */
+        float[] position = new float[] { transform.position.x, transform.position.y }; 
+        return position;
+    }
+
+    public void RestoreState(object state)
+    {
+        var saveData = (PlayerSaveData)state;
+        
+        //Restore the position
+        var pos = saveData.position;
+        transform.position = new Vector3(pos[0], pos[1]);
+        
+        //Restore Party
+        GetComponent<PokemonParty>().Pokemons =  saveData.pokemons.Select(s => new Pokemon(s)).ToList();
+    }
+}
+
+[Serializable]
+public class PlayerSaveData
+{
+    public float[] position;
+    public List<PokemonSaveData> pokemons;
 }
