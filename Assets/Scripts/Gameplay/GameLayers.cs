@@ -12,7 +12,8 @@ public class GameLayers : MonoBehaviour
 
     [SerializeField] LayerMask playerLayer; //variable for NPCs to not walk through player
     [SerializeField] LayerMask fovLayer; //variable for NPCs to not walk through player
-
+    [SerializeField] LayerMask portalLayer;
+    
     //use singleton pattern so that this script can easily be accessed from any other script
     public static GameLayers Instance { get; set; }
 
@@ -38,5 +39,15 @@ public class GameLayers : MonoBehaviour
     public LayerMask FOVLayer
     {
         get => fovLayer;
+    }
+
+    public LayerMask PortalLayer
+    {
+        get => portalLayer;
+    }
+
+    public LayerMask TriggerableLayers
+    {
+        get => grassLayer | fovLayer | portalLayer;
     }
 }

@@ -37,6 +37,7 @@ public class Pokemon
         }
     }
 
+    public int Exp {get; set; }
     public int HP { get; set; } //variable to store the current HP so the HP can reduce during the battle and be available to save that
 
     public List<Move> Moves { get; set; }
@@ -76,9 +77,12 @@ public class Pokemon
             if (move.Level <= Level)
                 Moves.Add(new Move(move.Base));
 
-            if (Moves.Count >= 4)
+            if (Moves.Count >= PokemonBase.MaxNumOfMoves)
                 break;
         }
+        
+        Exp = Base.GetExpForLevel(Level);
+        
         CalculateStats();
         HP = MaxHp;
 
@@ -170,6 +174,28 @@ public class Pokemon
         } 
     }
 
+    public bool CheckForLevelUp()
+    {
+        if (Exp > Base.GetExpForLevel(level + 1))
+        {
+            level++;
+            return true;
+        }
+        return false;
+    }
+
+    public LearnableMove GetLearnableMoveAtCurrentLevel()
+    {
+        return Base.LearnableMoves.Where(x => x.Level == level).FirstOrDefault();
+    }
+
+    public void LearnMove(LearnableMove moveToLearn)
+    {
+        if (Moves.Count > PokemonBase.MaxNumOfMoves)
+            return;
+        Moves.Add(new Move(moveToLearn.Base));    
+    }
+    
     public int Attack
     {
         get { return GetStat(Stat.Attack); }

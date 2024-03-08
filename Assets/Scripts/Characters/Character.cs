@@ -11,11 +11,23 @@ public class Character : MonoBehaviour
 
     public bool IsMoving { get; private set; }
 
+    public float OffsetY { get; private set; } = 0.3f;
     CharactersAnimator animator;        //use custom animator, not using Unity's animator system
     private void Awake()
     {
         animator = GetComponent<CharactersAnimator>();
+        SetPositionAndSnapToTile(transform.position);
     }
+
+    public void SetPositionAndSnapToTile(Vector2 pos)
+    {
+        // 2.3 -> Floor -> 2 + 0.5 -> 2.5 (center in tile)
+        pos.x = Mathf.Floor(pos.x) + 0.5f;
+        pos.y = Mathf.Floor(pos.y) - 0.1f + OffsetY;
+
+        transform.position = pos;
+    }
+    
     public IEnumerator Move(Vector3 moveVector, Action OnMoveOver = null ) //moveVector to calculate target postion
                                                       //not compulsory while calling this function
     {

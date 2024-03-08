@@ -8,9 +8,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] string name;
     [SerializeField] Sprite sprite;
     
-    public event Action OnEncountered; //import "System" namespace
-    public event Action <Collider2D> OnEnterTrainersView;
-    
     private Vector2 input; //move the player
 
     private Character character; //reference to Character script
@@ -84,32 +81,19 @@ public class PlayerController : MonoBehaviour
 
     private void OnMoveOver()
     {
-        CheckForEncounters();
-        CheckIfInTrainerView();
-    }
-    private void CheckForEncounters() //this function will handle the battle triggering logic
-    {
-        if (Physics2D.OverlapCircle(transform.position, 0.2f, GameLayers.Instance.GrassLayer) != null) //check if the tile when the player move into is actually a grass tile 
-                                   //position of player       //null means the player step on a grass tile
-        
+        var colliders = Physics2D.OverlapCircleAll(transform.position - new Vector3(0, character.OffsetY), 0.2f, GameLayers.Instance.TriggerableLayers);
+
+        foreach (var collider in colliders)
         {
-            if (UnityEngine.Random.Range(1,101) <=10)
+            var triggerable = collider.GetComponent<IPlayerTriggerable>();
+            if (triggerable != null)
             {
-                character.Animator.IsMoving = false; //once the battle start, the animation will stop
-                OnEncountered();
+                triggerable.OnPlayerTriggered(this);
+                break;
             }
         }
     }
-
-    private void CheckIfInTrainerView()
-    {
-        var collider = Physics2D.OverlapCircle(transform.position, 0.2f, GameLayers.Instance.FOVLayer);
-        if (collider != null)
-        {
-            character.Animator.IsMoving = false;
-            OnEnterTrainersView?.Invoke(collider);
-        }
-    }
+    
     public string Name
     {
         get => name;
@@ -119,4 +103,5 @@ public class PlayerController : MonoBehaviour
     {
         get => sprite;  
     }
+    public Character Character => character;
 }

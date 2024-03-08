@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;          //import TMPro to use the "Text - TextMeshPro" functions of Unity
 using UnityEngine;
 using UnityEngine.UI; //import UnityEngine.UI when working with UI
@@ -10,6 +11,7 @@ public class BattleHUD : MonoBehaviour
     [SerializeField] TextMeshProUGUI levelText;
     [SerializeField] TextMeshProUGUI statusText;
     [SerializeField] HPBar hpBar;
+    [SerializeField] GameObject expBar;
 
     //set different color for different statuses
     [SerializeField] Color PSN_Color;
@@ -26,9 +28,10 @@ public class BattleHUD : MonoBehaviour
         _pokemon = pokemon;
 
         nameText.text = pokemon.Base.Name;
-        levelText.text = "Lv." + pokemon.Level;
+        SetLevel();
         hpBar.SetHP((float)pokemon.HP / pokemon.MaxHp); //convert HP and MaxHP to float since both of them are integers and for the scale I use float
-
+        SetExp();
+        
         statusColors = new Dictionary<ConditionID, Color>()
         {
             {ConditionID.PSN, PSN_Color },
@@ -55,6 +58,39 @@ public class BattleHUD : MonoBehaviour
         }
     }
 
+    public void SetLevel()
+    {
+        levelText.text = "Lv." + _pokemon.Level;
+    }
+
+    public void SetExp()
+    {
+        if (expBar == null)
+            return;
+        float normalizedExp = GetNormalizedExp();
+        expBar.transform.localScale = new Vector3(normalizedExp, 1, 1);
+    }
+    
+    public IEnumerator SetExpSmoothly(bool reset = false)
+    {
+        if (expBar == null)
+            yield break;
+        
+        if (reset)
+            expBar.transform.localScale = new Vector3(0, 1, 1);
+
+        float normalizedExp = GetNormalizedExp();
+        yield return expBar.transform.DOScaleX(normalizedExp, 1.5f).WaitForCompletion();
+    }
+
+    float GetNormalizedExp()
+    {
+        int currentLevelExp = _pokemon.Base.GetExpForLevel(_pokemon.Level);
+        int nextLevelExp = _pokemon.Base.GetExpForLevel(_pokemon.Level + 1);
+        
+        float normalizedExp = (float)(_pokemon.Exp - currentLevelExp) / (nextLevelExp - currentLevelExp);
+        return Mathf.Clamp01(normalizedExp);
+    }
     public IEnumerator UpdateHP() //update HP of the pokemon after taking damage
     {
           if (_pokemon.HPChanged)

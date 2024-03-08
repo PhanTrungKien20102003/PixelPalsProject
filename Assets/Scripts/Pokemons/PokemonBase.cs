@@ -30,12 +30,56 @@ public class PokemonBase : ScriptableObject
     [SerializeField] int spAttack;
     [SerializeField] int spDefense;
     [SerializeField] int speed;
+    
+    [SerializeField] int expYield; //experience of each Pokemon
+    [SerializeField] GrowthRate growthRate; //growth rate of each Pokemon to see which will level up faster
 
     [SerializeField] int catchRate = 255;
 
     [SerializeField] List<LearnableMove> learnableMoves; /* I prefer using list than array although they almost like the same
                                                             but it comes with some more predefined functions which will be useful */
 
+    public static int MaxNumOfMoves { get; set; } = 4;
+    public int GetExpForLevel(int level)
+    {
+        if (growthRate == GrowthRate.Fast)
+        {
+            return Mathf.FloorToInt(4 * (level * level * level) / 5f);
+        }    
+        else if (growthRate == GrowthRate.MediumFast)
+        {
+            return level * level * level;
+        }
+        else if (growthRate == GrowthRate.MediumSlow)
+        {
+            return 6 * (level * level * level) / 5 - 15 * (level * level) + 100 * level - 140;
+        }
+        else if (growthRate == GrowthRate.Slow)
+        {
+            return 5 * (level * level * level) / 4;
+        }
+        else if (growthRate == GrowthRate.Fluctuating)
+        {
+            return GetFluctuating(level);
+        }
+        return -1;
+    }
+    public int GetFluctuating(int level)
+    {
+        if (level <= 15)
+        {
+            return Mathf.FloorToInt(Mathf.Pow(level, 3) * ((Mathf.Floor((level + 1) / 3) + 24) / 50));
+        }
+        else if (level >= 15 && level <= 36)
+        {
+            return Mathf.FloorToInt(Mathf.Pow(level, 3) * ((14 + level) / 50));
+        }
+        else
+        {
+            return Mathf.FloorToInt(Mathf.Pow(level, 3) * ((Mathf.Floor(level / 2) + 32) / 50));
+        }
+    }
+    
     //Properties
     public string Name
     {
@@ -92,6 +136,10 @@ public class PokemonBase : ScriptableObject
         get { return learnableMoves; }
     }
     public int CatchRate => catchRate;
+    
+    public int ExpYield => expYield;
+    public GrowthRate GrowthRatio => growthRate;
+    
 
     [System.Serializable]
     public class LearnableMove //store list of moves the pokemon can learn and the level at which it will learn them all
@@ -134,6 +182,15 @@ public class PokemonBase : ScriptableObject
         Dark,
         Steel,
         Fairy
+    }
+
+    public enum GrowthRate //enum for how fast Pokemon can level up base on the growth rate
+    {
+        Fast,
+        MediumFast,
+        MediumSlow,
+        Slow,
+        Fluctuating
     }
 
     public enum Stat

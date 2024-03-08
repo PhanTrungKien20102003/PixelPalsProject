@@ -7,7 +7,7 @@ using UnityEngine;
     - Have a game controller inside which will store the GameState -- GameState = FreeRoam, Battle, etc.
         +) Depending upon the state, we will give the controller to either Player Controller or Battle System 
         => Both of them can't have the control at the same time. */
-public enum GameState { FreeRoam, Battle, Dialog, CutScene}
+public enum GameState { FreeRoam, Battle, Dialog, CutScene, Paused}
 public class GameController : MonoBehaviour
 {
     //references for both Player and Battle
@@ -17,6 +17,8 @@ public class GameController : MonoBehaviour
     [SerializeField] Camera worldCamera; //reference for main camera
 
     GameState state;
+    
+    GameState stateBeforePause;
     
     public static GameController Instance { get; private set; }
 
@@ -28,18 +30,7 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        playerController.OnEncountered += StartBattle; /* subscribed to the event that has created and called new function
-                                                         "StartBattle" when this event is fired */
         battleSystem.OnBattleOver += EndBattle;
-        playerController.OnEnterTrainersView += (Collider2D trainerCollider) =>
-        {
-            var trainer = trainerCollider.GetComponentInParent<TrainerController>();
-            if (trainer != null)
-            {
-                state = GameState.CutScene;
-                StartCoroutine(trainer.TriggerTrainerBattle(playerController));
-            }
-        };
         
         DialogManager.Instance.OnShowDialog += () => //subscribe to the OnShowDialog event 
         {
@@ -54,7 +45,20 @@ public class GameController : MonoBehaviour
             
         };
     }
-    void StartBattle()
+
+    public void PauseGame(bool pause)
+    {
+        if (pause)
+        {
+            stateBeforePause = state;
+            state = GameState.Paused;
+        }
+        else
+        {
+            state = stateBeforePause;
+        }
+    }
+    public void StartBattle()
     {
         state = GameState.Battle;
         battleSystem.gameObject.SetActive(true);
@@ -80,6 +84,12 @@ public class GameController : MonoBehaviour
         var trainerParty = trainer.GetComponent<PokemonParty>();
 
         battleSystem.StartTrainerBattle(playerParty, trainerParty); //will be called everytime encountered a new battle
+    }
+
+    public void OneEnterTrainersView(TrainerController trainer)
+    {
+        state = GameState.CutScene;
+        StartCoroutine(trainer.TriggerTrainerBattle(playerController));
     }
     void EndBattle(bool won)
     {
