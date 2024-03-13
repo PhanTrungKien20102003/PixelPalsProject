@@ -11,7 +11,6 @@ public class PartyMemberUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI levelText;
     [SerializeField] HPBar hpBar;
 
-    [SerializeField] Color highlightedColor;
 
     Pokemon _pokemon;
     public void SetData(Pokemon pokemon) //take PokemonLevel class
@@ -26,11 +25,8 @@ public class PartyMemberUI : MonoBehaviour
     public void SetSelected(bool selected) //highlight member when choosing
     {
         if (selected)
-        {
-            nameText.color = highlightedColor;
-        } else
-        {
+            nameText.color = GlobalSettings.instance.HighlightedColor;
+        else
             nameText.color = Color.black;
-        }
     }
 }

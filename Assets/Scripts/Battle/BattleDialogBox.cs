@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,6 @@ using TMPro;
 public class BattleDialogBox : MonoBehaviour
 {
     [SerializeField] int lettersPerSecond;
-    [SerializeField] Color highlightedColor;
 
     [SerializeField] TextMeshProUGUI dialogText;
     [SerializeField] GameObject actionSelector;
@@ -24,6 +24,14 @@ public class BattleDialogBox : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI yesText;
     [SerializeField] TextMeshProUGUI noText;
+
+    Color highlightedColor;
+
+    private void Start()
+    {
+        highlightedColor = GlobalSettings.instance.HighlightedColor;
+    }
+
     //set a dialog to the text
     public void SetDialog(string dialog)
     {

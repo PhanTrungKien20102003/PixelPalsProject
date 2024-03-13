@@ -54,12 +54,14 @@
      <Compile Include="Assets\Scripts\Core\EssentialObjectsSpawner.cs" />
      <Compile Include="Assets\Scripts\Battle\PartyMemberUI.cs" />
      <Compile Include="Assets\Scripts\Data\MoveDB.cs" />
+     <Compile Include="Assets\Scripts\Gameplay\GlobalSettings.cs" />
      <Compile Include="Assets\Scripts\Characters\TrainerController.cs" />
      <Compile Include="Assets\Scripts\Battle\MoveSelectionUI.cs" />
      <Compile Include="Assets\Scripts\Battle\BattleSystem.cs" />
      <Compile Include="Assets\Scripts\Pokemons\Conditions.cs" />
      <Compile Include="Assets\Scripts\Battle\HPBar.cs" />
      <Compile Include="Assets\Scripts\Pokemons\Pokemon.cs" />
+     <Compile Include="Assets\Scripts\UI\MenuController.cs" />
      <Compile Include="Assets\Scripts\Characters\TrainerFOV.cs" />
      <Compile Include="Assets\Scripts\Characters\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Battle\PartySlot.cs" />
@@ -107,6 +109,7 @@
      <Folder Include="Assets\Game\Resources\Pokemons" />
      <Folder Include="Assets\Game\UI" />
      <Folder Include="Assets\TextMesh Pro" />
+     <Folder Include="Assets\Scripts\UI" />
      <Folder Include="Assets\Art\Pokemons" />
      <Folder Include="Assets\Scripts" />
      <Folder Include="Assets\Scripts\Characters" />
