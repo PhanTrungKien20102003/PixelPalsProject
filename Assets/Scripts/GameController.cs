@@ -8,7 +8,7 @@ using UnityEngine;
     - Have a game controller inside which will store the GameState -- GameState = FreeRoam, Battle, etc.
         +) Depending upon the state, we will give the controller to either Player Controller or Battle System 
         => Both of them can't have the control at the same time. */
-public enum GameState { FreeRoam, Battle, Dialog, Menu, PartySlot, CutScene, Paused}
+public enum GameState { FreeRoam, Battle, Dialog, Menu, PartySlot, Bag, CutScene, Paused}
 public class GameController : MonoBehaviour
 {
     //references for both Player and Battle
@@ -18,6 +18,8 @@ public class GameController : MonoBehaviour
     [SerializeField] Camera worldCamera; //reference for main camera
 
     [SerializeField] PartySlot partySlot; //reference for party slot
+    
+    [SerializeField] InventoryUI inventoryUI;
     
     GameState state;
     
@@ -156,6 +158,15 @@ public class GameController : MonoBehaviour
             
             partySlot.HandleUpdate(onSelected, onBack);
         }
+        else if (state == GameState.Bag)
+        {
+            Action onBack = () =>
+            {
+                inventoryUI.gameObject.SetActive(false);
+                state = GameState.FreeRoam;
+            };
+            inventoryUI.HandleUpdate(onBack);
+        }
     }
     void OnMenuSelected(int selectedItem)
     {
@@ -169,6 +180,8 @@ public class GameController : MonoBehaviour
         else if (selectedItem == 1)
         {
             //Bag
+            inventoryUI.gameObject.SetActive(true);
+            state = GameState.Bag;
         }
         else if (selectedItem == 2)
         {

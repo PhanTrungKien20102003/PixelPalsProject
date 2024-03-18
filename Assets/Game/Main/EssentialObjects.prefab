@@ -3722,6 +3722,7 @@ MonoBehaviour:
   battleSystem: {fileID: 3477373050835348312}
   worldCamera: {fileID: 3429367877412733074}
   partySlot: {fileID: 6227663084194919183}
+  inventoryUI: {fileID: 3233885513698287983}
 --- !u!114 &593375645732871681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5123,6 +5124,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1136550590754426701, guid: 02c4c2353b6193e4c9d170269c85725d, type: 3}
   m_PrefabInstance: {fileID: 1317544160234550125}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3233885513698287983 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4515363110997922306, guid: 02c4c2353b6193e4c9d170269c85725d, type: 3}
+  m_PrefabInstance: {fileID: 1317544160234550125}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b43668a7bcd4e749be4050eace3e8d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4394185095965560644 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3365195519792806953, guid: 02c4c2353b6193e4c9d170269c85725d, type: 3}
