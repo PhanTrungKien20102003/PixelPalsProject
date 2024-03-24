@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
+public enum InventoryUIState { ItemSelection, PartySelection, Busy}
+
 public class InventoryUI : MonoBehaviour
 {
     [SerializeField] GameObject itemList;
@@ -13,16 +15,25 @@ public class InventoryUI : MonoBehaviour
 
     [SerializeField] Image itemIcon;
     [SerializeField] TextMeshProUGUI itemDescription;
+
+    [SerializeField] Image upArrow;
+    [SerializeField] Image downArrow;
+
+    [SerializeField] PartySlot partySlot;
     
     int selectedItem = 0;
+    InventoryUIState state;
+    
+    const int itemsInViewport = 9;
 
     List<ItemSlotUI> slotUIList; //the list to hold all the instantiated items 
-    
     Inventory inventory;
+    RectTransform itemListRect;
     
     private void Awake()
     {
         inventory = Inventory.GetInventory();
+        itemListRect = itemList.GetComponent<RectTransform>();
     }
 
     private void Start()
@@ -50,20 +61,38 @@ public class InventoryUI : MonoBehaviour
 
     public void HandleUpdate(Action onBack)
     {
-        int previousSelection = selectedItem;
+        if (state == InventoryUIState.ItemSelection)
+        {
+            int previousSelection = selectedItem;
         
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-            selectedItem++;
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
-            selectedItem--;
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+                selectedItem++;
+            else if (Input.GetKeyDown(KeyCode.UpArrow))
+                selectedItem--;
         
-        selectedItem = Mathf.Clamp(selectedItem, 0, inventory.Slots.Count - 1);
+            selectedItem = Mathf.Clamp(selectedItem, 0, inventory.Slots.Count - 1);
         
-        if (previousSelection != selectedItem)
-            UpdateItemSelection();
-        
-        if (Input.GetKeyDown(KeyCode.X))
-            onBack?.Invoke();
+            if (previousSelection != selectedItem)
+                UpdateItemSelection();
+            
+            if (Input.GetKeyDown(KeyCode.Z))
+                OpenPartySlot();
+            else if (Input.GetKeyDown(KeyCode.X))
+                onBack?.Invoke();
+        }
+        else if (state == InventoryUIState.PartySelection)
+        {
+            Action onSelected = () =>
+            {
+                //Use the item on the selected Pokemon
+            };
+            Action onBackPartyScreen = () =>
+            {
+                ClosePartySlot();
+            };
+            //Handle party selection
+            partySlot.HandleUpdate(onSelected, onBackPartyScreen);
+        }
     }
     
     void UpdateItemSelection()
@@ -79,5 +108,35 @@ public class InventoryUI : MonoBehaviour
         var item = inventory.Slots[selectedItem].Item;
         itemIcon.sprite = item.Icon;
         itemDescription.text = item.Description;
+
+        HandleScrolling();
+    }
+
+    //this function is for when user choose the first 4 item, it won't start scrolling but when user choose the 5th item, the scroll will start
+    void HandleScrolling()
+    {
+        if (slotUIList.Count <= itemsInViewport)
+            return;
+        
+        float scrollPosition = Mathf.Clamp(selectedItem - itemsInViewport/2, 0, selectedItem) * slotUIList[0].Height;
+        itemListRect.localPosition = new Vector2(itemListRect.localPosition.x, scrollPosition);
+
+        bool showUpArrow = selectedItem > itemsInViewport / 2;
+        upArrow.gameObject.SetActive(showUpArrow);
+        
+        bool showDownArrow = selectedItem + itemsInViewport / 2 < slotUIList.Count;
+        downArrow.gameObject.SetActive(showDownArrow);
+
+    }
+
+    void OpenPartySlot()
+    {
+        state = InventoryUIState.PartySelection;
+        partySlot.gameObject.SetActive(true);
+    }
+    void ClosePartySlot()
+    {
+        state = InventoryUIState.ItemSelection;
+        partySlot.gameObject.SetActive(false);
     }
 }

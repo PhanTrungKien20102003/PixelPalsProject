@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq; //import Linq
@@ -6,6 +7,8 @@ using UnityEngine;
 public class PokemonParty : MonoBehaviour
 {
     [SerializeField] List <Pokemon> pokemons; //make it SerializedField so that I can set it from the Inspector
+
+    public event Action OnUpdated;
 
     public List<Pokemon> Pokemons
     {
@@ -31,10 +34,18 @@ public class PokemonParty : MonoBehaviour
     public void AddPokemon(Pokemon newPokemon)
     {
         if (pokemons.Count < 6)
+        {
             pokemons.Add(newPokemon);
+            OnUpdated?.Invoke();            
+        }
         else
         {
             // TODO: Add PC once that implemented
         }
+    }
+
+    public static PokemonParty GetPlayerParty()
+    {
+        return FindObjectOfType<PlayerController>().GetComponent<PokemonParty>();
     }
 }

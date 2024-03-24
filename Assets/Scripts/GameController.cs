@@ -33,6 +33,9 @@ public class GameController : MonoBehaviour
         Instance = this;
 
         menuController = GetComponent<MenuController>();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         
         PokemonDB.Init();
         MoveDB.Init();
@@ -174,7 +177,6 @@ public class GameController : MonoBehaviour
         {
             //Pokemon
             partySlot.gameObject.SetActive(true);
-            partySlot.SetPartyData(playerController.GetComponent<PokemonParty>().Pokemons);
             state = GameState.PartySlot;
         }
         else if (selectedItem == 1)

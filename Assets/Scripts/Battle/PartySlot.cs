@@ -11,7 +11,8 @@ public class PartySlot : MonoBehaviour
     
     PartyMemberUI[] memberSlots;
     List<Pokemon> pokemons;
-
+    PokemonParty party;
+    
     int selection = 0;
 
     public Pokemon SelectedMember => pokemons[selection];
@@ -23,11 +24,16 @@ public class PartySlot : MonoBehaviour
         /*this function will return all the party member UI Components that are attached to the child objects of the party screen
         => Don't have to assign one-by-one from the inspector and don't have to worry in case changing number of members that allow in party */
         memberSlots = GetComponentsInChildren<PartyMemberUI>(true);
+
+        party = PokemonParty.GetPlayerParty();
+        SetPartyData();
+        
+        party.OnUpdated += SetPartyData;
     }
 
-    public void SetPartyData(List <Pokemon> pokemons)
+    public void SetPartyData()
     {
-        this.pokemons = pokemons;
+        pokemons = party.Pokemons;
 
         for  (int i = 0; i < memberSlots.Length; i++)
         {

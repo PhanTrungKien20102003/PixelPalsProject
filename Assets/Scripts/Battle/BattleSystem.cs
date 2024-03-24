@@ -138,7 +138,6 @@ public class BattleSystem : MonoBehaviour
     {
         partySlot.CalledFrom = state;
         state = BattleState.PartySlot;
-        partySlot.SetPartyData(playerParty.Pokemons);
         partySlot.gameObject.SetActive(true);
     }
     void MoveSelection()
