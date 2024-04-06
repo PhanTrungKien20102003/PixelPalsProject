@@ -29,6 +29,22 @@ public class DialogManager : MonoBehaviour
 
     public bool IsShowing {  get; private set; } //stop the NPC moving around when the dialog is showing
 
+    public IEnumerator ShowDialogText(string text, bool waitForInput = true)
+    {
+        IsShowing = true;
+        dialogBox.SetActive(true);
+        
+        yield return TypeDialog(text);
+        
+        //this will make the function wait until the player presses the Z key
+        if (waitForInput)
+        {
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Z));
+        }
+        
+        dialogBox.SetActive(false);
+        IsShowing = false;
+    }
     public IEnumerator ShowDialog(Dialog dialog, Action onFinished = null )
     {                                             //check if the dialog has finished yet or not
 

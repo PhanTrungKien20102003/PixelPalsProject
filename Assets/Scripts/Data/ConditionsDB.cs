@@ -28,7 +28,7 @@ public class ConditionsDB //store instances of Conditions class
                 //using lambda function to define the function here itself while assigning it
                 OnAfterTurn = (Pokemon pokemon) =>
                 {
-                    pokemon.UpdateHP(pokemon.MaxHp / 8);
+                    pokemon.DecreaseHP(pokemon.MaxHp / 8);
                     pokemon.StatusChanges.Enqueue($"{pokemon.Base.Name} is hurt by poison!");
                 }
             }
@@ -41,7 +41,7 @@ public class ConditionsDB //store instances of Conditions class
                 StartMessage = "is now burned!",
                 OnAfterTurn = (Pokemon pokemon) =>
                 {
-                    pokemon.UpdateHP(pokemon.MaxHp / 16);
+                    pokemon.DecreaseHP(pokemon.MaxHp / 16);
                     pokemon.StatusChanges.Enqueue($"{pokemon.Base.Name} is hurt by its burn!");
                 }
             }
@@ -143,7 +143,7 @@ public class ConditionsDB //store instances of Conditions class
 
                     //Hurt by confusion
                     pokemon.StatusChanges.Enqueue($"{pokemon.Base.Name} is confused!");
-                    pokemon.UpdateHP(pokemon.MaxHp / 8);
+                    pokemon.DecreaseHP(pokemon.MaxHp / 8);
                     pokemon.StatusChanges.Enqueue($"It hurt itself due to its confusion!");
                     return false;
                 }

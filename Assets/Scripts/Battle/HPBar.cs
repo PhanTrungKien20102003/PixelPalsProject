@@ -5,12 +5,16 @@ using UnityEngine;
 public class HPBar : MonoBehaviour
 {
     [SerializeField] GameObject health; //a reference to the image that is showing the health
+    
+    public bool IsUpdating { get; private set; }
     public void SetHP(float hpNormalized)
     {
         health.transform.localScale = new Vector3(hpNormalized, 1f); 
     }
     public IEnumerator SetHPSmooth(float newHP) //decrease the HP slowly and smoothly
     {
+        IsUpdating = true;
+        
         float curHP = health.transform.localScale.x; //current HP
         float changeAmt = curHP - newHP; //calculate the amount of HP that we have to change
         
@@ -24,5 +28,7 @@ public class HPBar : MonoBehaviour
             yield return null;
         }
         health.transform.localScale = new Vector3(newHP, 1f); //new HP
+
+        IsUpdating = false;
     }
 }

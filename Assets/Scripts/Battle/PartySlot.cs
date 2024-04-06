@@ -40,7 +40,7 @@ public class PartySlot : MonoBehaviour
             if (i < pokemons.Count) 
             {
                 memberSlots[i].gameObject.SetActive(true);
-                memberSlots[i].SetData(pokemons[i]); //set the data of pokemon into the member slot and passing pokemon at that index
+                memberSlots[i].Init(pokemons[i]); //set the data of pokemon into the member slot and passing pokemon at that index
             } 
             else
                 memberSlots[i].gameObject.SetActive(false);

@@ -63,9 +63,8 @@ public class Pokemon
        to the queue */
     public Queue<string> StatusChanges { get; private set; }
 
-    public bool HPChanged { get; set; }
-
     public event System.Action OnStatusChanged;
+    public event System.Action OnHPChanged;
 
     public void Init()                     //creating objects of PokemonLevel class from the Inspector itself
                //stand for initalization
@@ -278,15 +277,21 @@ public class Pokemon
         float d = a * move.Base.Power * ((float) attack / defense);
         int damage = Mathf.FloorToInt(d * modifiers);
 
-        UpdateHP(damage);
+        DecreaseHP(damage);
 
         return damageDetails;
     }
+    
+    public void IncreaseHP(int amount) //use this function whenever want to reduce HP
+    {
+        HP = Mathf.Clamp(HP + amount, 0, MaxHp);
+        OnHPChanged?.Invoke();
+    }
 
-    public void UpdateHP(int damage) //use this function whenever want to reduce HP
+    public void DecreaseHP(int damage) //use this function whenever want to reduce HP
     {
         HP = Mathf.Clamp(HP - damage, 0, MaxHp);
-        HPChanged = true;
+        OnHPChanged?.Invoke();
     }
 
     public void SetStatus(ConditionID condition_id)

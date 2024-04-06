@@ -117,6 +117,7 @@
      <Folder Include="Assets\Scripts\UI" />
      <Folder Include="Assets\Art\Pokemons" />
      <Folder Include="Assets\Scripts" />
+     <Folder Include="Assets\Art\UI" />
      <Folder Include="Assets\Scripts\Characters" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
      <Folder Include="Assets\Scenes" />
