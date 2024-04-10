@@ -13,6 +13,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] GameObject itemList;
     [SerializeField] ItemSlotUI itemSlotUI;
 
+    [SerializeField] TextMeshProUGUI categoryText;
     [SerializeField] Image itemIcon;
     [SerializeField] TextMeshProUGUI itemDescription;
 
@@ -21,9 +22,11 @@ public class InventoryUI : MonoBehaviour
 
     [SerializeField] PartySlot partySlot;
 
-    Action onItemUsed;
+    Action<ItemBase> onItemUsed;
     
     int selectedItem = 0;
+    int selectedCategory = 0;
+    
     InventoryUIState state;
     
     const int itemsInViewport = 9;
@@ -52,7 +55,7 @@ public class InventoryUI : MonoBehaviour
             Destroy(child.gameObject);
 
         slotUIList = new List<ItemSlotUI>();
-        foreach (var itemSlot in inventory.Slots)
+        foreach (var itemSlot in inventory.GetSlotsByCategory(selectedCategory))
         {
             var slotUIObject = Instantiate(itemSlotUI, itemList.transform);
             slotUIObject.SetData(itemSlot);
@@ -63,26 +66,44 @@ public class InventoryUI : MonoBehaviour
         UpdateItemSelection();
     }
 
-    public void HandleUpdate(Action onBack, Action onItemUsed = null)
+    public void HandleUpdate(Action onBack, Action<ItemBase> onItemUsed = null)
     {
         this.onItemUsed = onItemUsed;
         
         if (state == InventoryUIState.ItemSelection)
         {
             int previousSelection = selectedItem;
-        
+            int previousCategory = selectedCategory;
+            
             if (Input.GetKeyDown(KeyCode.DownArrow))
                 selectedItem++;
             else if (Input.GetKeyDown(KeyCode.UpArrow))
                 selectedItem--;
-        
-            selectedItem = Mathf.Clamp(selectedItem, 0, inventory.Slots.Count - 1);
-        
-            if (previousSelection != selectedItem)
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+                selectedCategory++;
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                selectedCategory--;
+
+            if (selectedCategory > Inventory.ItemCategories.Count - 1)
+                selectedCategory = 0;
+            else if (selectedCategory < 0)
+                selectedCategory = Inventory.ItemCategories.Count - 1;
+
+            selectedItem = Mathf.Clamp(selectedItem, 0, inventory.GetSlotsByCategory(selectedCategory).Count - 1);
+
+            if (previousCategory != selectedCategory)
+            {
+                ResetSelection();
+                categoryText.text = Inventory.ItemCategories[selectedCategory];
+                UpdateItemList();
+            } 
+            else if (previousSelection != selectedItem)
+            {
                 UpdateItemSelection();
-            
+            }
+
             if (Input.GetKeyDown(KeyCode.Z))
-                OpenPartySlot();
+                ItemSelected();
             else if (Input.GetKeyDown(KeyCode.X))
                 onBack?.Invoke();
         }
@@ -102,15 +123,29 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
+    void ItemSelected()
+    {
+        if (selectedCategory == (int)ItemCategory.POKEBALLS)
+        {
+            StartCoroutine(UseItem());
+        }
+        else
+        {
+            OpenPartySlot();
+        }
+    }
+
     IEnumerator UseItem()
     {
         state = InventoryUIState.Busy;
         
-        var usedItem = inventory.UseItem(selectedItem, partySlot.SelectedMember);
+        var usedItem = inventory.UseItem(selectedItem, partySlot.SelectedMember, selectedCategory); 
         if (usedItem != null)
         {
-            yield return DialogManager.Instance.ShowDialogText($"The player used {usedItem.Name}!");
-            onItemUsed?.Invoke();
+            if (!(usedItem is PokeballItems))
+                yield return DialogManager.Instance.ShowDialogText($"The player used {usedItem.Name}!");
+                
+            onItemUsed?.Invoke(usedItem);
         }
         else
             yield return DialogManager.Instance.ShowDialogText($"It won't have any effect!");
@@ -120,6 +155,10 @@ public class InventoryUI : MonoBehaviour
     
     void UpdateItemSelection()
     {
+        var slots = inventory.GetSlotsByCategory(selectedCategory);
+        
+        selectedItem = Mathf.Clamp(selectedItem, 0, slots.Count - 1);
+
         for (int i = 0; i < slotUIList.Count; i++)
         {
             if (i == selectedItem)
@@ -128,12 +167,13 @@ public class InventoryUI : MonoBehaviour
                 slotUIList[i].NameText.color = Color.black;
         }
         
-        selectedItem = Mathf.Clamp(selectedItem, 0, inventory.Slots.Count - 1);
+        if (slots.Count > 0)
+        {
+            var item = slots[selectedItem].Item;
+            itemIcon.sprite = item.Icon;
+            itemDescription.text = item.Description;
+        }
         
-        var item = inventory.Slots[selectedItem].Item;
-        itemIcon.sprite = item.Icon;
-        itemDescription.text = item.Description;
-
         HandleScrolling();
     }
 
@@ -154,6 +194,17 @@ public class InventoryUI : MonoBehaviour
 
     }
 
+    void ResetSelection()
+    {
+        selectedItem = 0;
+        
+        upArrow.gameObject.SetActive(false);
+        downArrow.gameObject.SetActive(false);
+
+        itemIcon.sprite = null;
+        itemDescription.text = "";
+
+    }
     void OpenPartySlot()
     {
         state = InventoryUIState.PartySelection;

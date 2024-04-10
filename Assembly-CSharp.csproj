@@ -90,6 +90,7 @@
      <Compile Include="Assets\Scripts\Saving\SavingSystem.cs" />
      <Compile Include="Assets\Scripts\Gameplay\IPlayerTriggerable.cs" />
      <Compile Include="Assets\Scripts\Characters\NPCController.cs" />
+     <Compile Include="Assets\Scripts\Inventory\PokeballItems.cs" />
      <Compile Include="Assets\Scripts\Gameplay\Dialog.cs" />
      <Compile Include="Assets\Scripts\Saving\SavableEntity.cs" />
      <Folder Include="Assets" />
@@ -101,6 +102,7 @@
      <Folder Include="Assets\TextMesh Pro\Sprites" />
      <Folder Include="Assets\Scripts\Util" />
      <Folder Include="Assets\TextMesh Pro\Resources\Sprite Assets" />
+     <Folder Include="Assets\Game\Resources\Items\Pokeball Items" />
      <Folder Include="Assets\Scripts\Battle" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
      <Folder Include="Assets\TextMesh Pro\Resources\Fonts &amp; Materials" />
@@ -117,6 +119,7 @@
      <Folder Include="Assets\Scripts\UI" />
      <Folder Include="Assets\Art\Pokemons" />
      <Folder Include="Assets\Scripts" />
+     <Folder Include="Assets\Game\Items\Pokeball" />
      <Folder Include="Assets\Art\UI" />
      <Folder Include="Assets\Scripts\Characters" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
@@ -154,6 +157,7 @@
      <Folder Include="Assets\Scripts\Pokemons" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
      <Folder Include="Assets\Art" />
+     <Folder Include="Assets\Game\Resources\Items\Recovery Items" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
      <Folder Include="Assets\Scripts\Core" />
      <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />

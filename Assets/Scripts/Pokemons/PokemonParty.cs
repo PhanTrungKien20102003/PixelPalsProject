@@ -20,12 +20,17 @@ public class PokemonParty : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void Awake()
     {
         foreach (var pokemon in pokemons) //loop through all the pokemons and initialize each one of them
         {
             pokemon.Init();
         }
+    }
+
+    private void Start()
+    {
+        
     }
     public Pokemon GetHealthyPokemon() //pass the first Pokemon in the party that isn't fainted
     {

@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1473.6
     height: 820.8
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Inspector
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -95,8 +95,8 @@ MonoBehaviour:
     y: 0
     width: 274.4
     height: 457.6
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -427,7 +427,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Game/Main
+    - Assets/Game/Resources/Items/Pokeball Items
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -435,16 +435,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 71
   m_LastFolders:
-  - Assets/Game/Main
+  - Assets/Game/Resources/Items/Pokeball Items
   m_LastFoldersGridSize: 71
   m_LastProjectPath: D:\Unity\Project\PokemonTesting
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 99.80002}
-    m_SelectedIDs: ca890000
-    m_LastClickedID: 35274
-    m_ExpandedIDs: 00000000a2890000a489000000ca9a3b
+    scrollPos: {x: 0, y: 60}
+    m_SelectedIDs: cc8b0000
+    m_LastClickedID: 35788
+    m_ExpandedIDs: 00000000148a0000168a0000188a00001a8a00003e8a0000428a0000a68b000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -472,7 +472,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000a2890000a4890000
+    m_ExpandedIDs: 00000000148a0000168a0000188a00001a8a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -497,10 +497,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
-    m_ExpandedInstanceIDs: c62300005eb3000066ad0000146a0000946a000038740000306a00005a710000
+    m_SelectedInstanceIDs: 26690000
+    m_LastClickedInstanceID: 26918
+    m_HadKeyboardFocusLastEvent: 1
+    m_ExpandedInstanceIDs: c62300005eb3000066ad0000146a0000946a000038740000306a00005a710000d48d0000d88d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -612,9 +612,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: d4f3ffff
-      m_LastClickedID: -3116
-      m_ExpandedIDs: 12f4ffffb6f8ffff10fbfffff4ffffff
+      m_SelectedIDs: 26690000
+      m_LastClickedID: 0
+      m_ExpandedIDs: 10fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1007,9 +1007,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -2.0645933, y: -5.597058, z: -0.030311393}
+    m_Target: {x: 2.4892418, y: -6.720723, z: -0.049677745}
     speed: 2
-    m_Value: {x: -2.0645933, y: -5.597058, z: -0.030311393}
+    m_Value: {x: 2.4892418, y: -6.720723, z: -0.049677745}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1059,9 +1059,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 12.301758
+    m_Target: 12.389687
     speed: 2
-    m_Value: 12.301758
+    m_Value: 12.389687
   m_Ortho:
     m_Target: 1
     speed: 2

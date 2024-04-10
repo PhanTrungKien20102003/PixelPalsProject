@@ -198,4 +198,6 @@ public class GameController : MonoBehaviour
             state = GameState.FreeRoam;
         }
     }
+    
+    public GameState State => state;
 }
