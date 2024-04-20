@@ -22,18 +22,19 @@ public class NPCController : MonoBehaviour, Interactable
     }
 
                         //the Transform of the Game Object that initiated the interaction. In this case, it's the transform of the player
-    public void Interact(Transform initiator)
+    public IEnumerator Interact(Transform initiator)
     {
         //can only interact with NPC when the NPC is in the Idle state, won't be able to talk when walking
         if (state == NPCState.Idle)
         {
             state = NPCState.Dialog;
             character.LookTowards(initiator.position);
-            StartCoroutine(DialogManager.Instance.ShowDialog(dialog, () =>
-            {
-                idleTimer = 0f; //set to 0 to not use any previously stored value
-                state = NPCState.Idle;
-            }));
+
+            yield return DialogManager.Instance.ShowDialog(dialog);
+           
+            idleTimer = 0f; //set to 0 to not use any previously stored value
+            state = NPCState.Idle;
+            
         }
     }
     private void Update()

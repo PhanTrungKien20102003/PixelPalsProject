@@ -40,10 +40,10 @@ public class PlayerController : MonoBehaviour, ISavable
         character.HandleUpdate();
 
         if (Input.GetKeyDown(KeyCode.Space))
-            Interact();
+            StartCoroutine(Interact());
     }
 
-    void Interact() //talk with NPCs
+    IEnumerator Interact() //talk with NPCs
     {
         var facingDir = new Vector3(character.Animator.MoveX, character.Animator.MoveY); //find the tile where player is facing and check if there is any interactable object in that tile
         var interactPos = transform.position + facingDir; //postion of the tile to which the player is facing
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour, ISavable
 
         if (collider != null)
         {
-            collider.GetComponent<Interactable>()?.Interact(transform);
+            yield return collider.GetComponent<Interactable>()?.Interact(transform);
         }
     }
 

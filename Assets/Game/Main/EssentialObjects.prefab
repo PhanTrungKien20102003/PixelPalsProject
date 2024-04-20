@@ -6227,6 +6227,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PartySlot
       objectReference: {fileID: 0}
+    - target: {fileID: 7780725934952140603, guid: daa8e3e165ac00b4f89469051e945d2f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

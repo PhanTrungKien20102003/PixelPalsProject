@@ -148,7 +148,10 @@ public class InventoryUI : MonoBehaviour
             onItemUsed?.Invoke(usedItem);
         }
         else
-            yield return DialogManager.Instance.ShowDialogText($"It won't have any effect!");
+        {
+            if (selectedCategory == (int)ItemCategory.ITEMS)
+                yield return DialogManager.Instance.ShowDialogText($"It won't have any effect!");
+        }
 
         ClosePartySlot();
     }
