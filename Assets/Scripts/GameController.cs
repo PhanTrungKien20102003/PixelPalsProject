@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour
     
     GameState state;
     
-    GameState stateBeforePause;
+    GameState previousState;
     
     MenuController menuController;
     public static GameController Instance { get; private set; }
@@ -40,6 +40,7 @@ public class GameController : MonoBehaviour
         PokemonDB.Init();
         MoveDB.Init();
         ConditionsDB.Init();
+        ItemDB.Init();
     }
 
     private void Start()
@@ -50,12 +51,13 @@ public class GameController : MonoBehaviour
         
         DialogManager.Instance.OnShowDialog += () => //subscribe to the OnShowDialog event 
         {
+            previousState = state;
             state = GameState.Dialog;
         };
         DialogManager.Instance.OnCloseDialog += () => //subscribe to the OnCloseDialog event 
         {
             if (state == GameState.Dialog)
-                state = GameState.FreeRoam;
+                state = previousState;
         };
         
         menuController.onBack += () =>
@@ -69,12 +71,12 @@ public class GameController : MonoBehaviour
     {
         if (pause)
         {
-            stateBeforePause = state;
+            previousState = state;
             state = GameState.Paused;
         }
         else
         {
-            state = stateBeforePause;
+            state = previousState;
         }
     }
     public void StartBattle()

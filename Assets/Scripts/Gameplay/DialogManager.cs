@@ -25,6 +25,7 @@ public class DialogManager : MonoBehaviour
 
     public IEnumerator ShowDialogText(string text, bool waitForInput = true)
     {
+        OnShowDialog?.Invoke();
         IsShowing = true;
         dialogBox.SetActive(true);
         
@@ -36,8 +37,14 @@ public class DialogManager : MonoBehaviour
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Z));
         }
         
+        CloseDialog();
+    }
+
+    public void CloseDialog()
+    {
         dialogBox.SetActive(false);
         IsShowing = false;
+        OnCloseDialog?.Invoke();
     }
     public IEnumerator ShowDialog(Dialog dialog)
     {                                            
@@ -60,8 +67,6 @@ public class DialogManager : MonoBehaviour
         dialogBox.SetActive(false);
         IsShowing = false;
         OnCloseDialog?.Invoke();
-
-
     }
 
     public void HandleUpdate()

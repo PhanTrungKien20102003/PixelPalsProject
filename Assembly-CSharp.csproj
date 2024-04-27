@@ -47,11 +47,13 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\Saving\ISavable.cs" />
+     <Compile Include="Assets\Scripts\Quests\Quest.cs" />
      <Compile Include="Assets\Scripts\Data\ConditionsDB.cs" />
      <Compile Include="Assets\Scripts\Core\Tilemap.cs" />
      <Compile Include="Assets\Scripts\Core\Fader.cs" />
      <Compile Include="Assets\Scripts\Data\PokemonDB.cs" />
      <Compile Include="Assets\Scripts\Core\EssentialObjectsSpawner.cs" />
+     <Compile Include="Assets\Scripts\Inventory\Pickup.cs" />
      <Compile Include="Assets\Scripts\Battle\PartyMemberUI.cs" />
      <Compile Include="Assets\Scripts\Data\MoveDB.cs" />
      <Compile Include="Assets\Scripts\Gameplay\GlobalSettings.cs" />
@@ -77,21 +79,26 @@
      <Compile Include="Assets\Scripts\Gameplay\GameLayers.cs" />
      <Compile Include="Assets\Scripts\Pokemons\PokemonParty.cs" />
      <Compile Include="Assets\Scripts\Battle\BattleDialogBox.cs" />
+     <Compile Include="Assets\Scripts\Pokemons\PokemonGiver.cs" />
      <Compile Include="Assets\Scripts\Battle\BattleUnit.cs" />
      <Compile Include="Assets\Scripts\Pokemons\MoveBase.cs" />
      <Compile Include="Assets\Scripts\Pokemons\Move.cs" />
      <Compile Include="Assets\Scripts\Pokemons\PokemonBase.cs" />
      <Compile Include="Assets\Scripts\Util\SpriteAnimator.cs" />
+     <Compile Include="Assets\Scripts\Gameplay\StoryItem.cs" />
      <Compile Include="Assets\Scripts\Gameplay\MapArea.cs" />
      <Compile Include="Assets\Scripts\Core\EssentialObjects.cs" />
      <Compile Include="Assets\Scripts\Inventory\ItemBase.cs" />
      <Compile Include="Assets\Scripts\Gameplay\DialogManager.cs" />
+     <Compile Include="Assets\Scripts\Inventory\ItemGiver.cs" />
      <Compile Include="Assets\Scripts\Characters\CharactersAnimator.cs" />
+     <Compile Include="Assets\Scripts\Quests\QuestBase.cs" />
      <Compile Include="Assets\Scripts\Saving\SavingSystem.cs" />
      <Compile Include="Assets\Scripts\Gameplay\IPlayerTriggerable.cs" />
      <Compile Include="Assets\Scripts\Characters\NPCController.cs" />
      <Compile Include="Assets\Scripts\Inventory\PokeballItems.cs" />
      <Compile Include="Assets\Scripts\Gameplay\Dialog.cs" />
+     <Compile Include="Assets\Scripts\Data\ItemDB.cs" />
      <Compile Include="Assets\Scripts\Saving\SavableEntity.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets\Game\Resources\Moves" />
@@ -104,6 +111,7 @@
      <Folder Include="Assets\TextMesh Pro\Resources\Sprite Assets" />
      <Folder Include="Assets\Game\Resources\Items\Pokeball Items" />
      <Folder Include="Assets\Scripts\Battle" />
+     <Folder Include="Assets\Game\Resources\Quests" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
      <Folder Include="Assets\TextMesh Pro\Resources\Fonts &amp; Materials" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
@@ -130,6 +138,7 @@
      <Folder Include="Assets\Scripts\Inventory\UI" />
      <Folder Include="Assets\Scripts\Data" />
      <Folder Include="Assets\Tiles" />
+     <Folder Include="Assets\Scripts\Quests" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
      <Folder Include="Assets\Art\Items" />

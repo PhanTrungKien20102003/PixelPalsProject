@@ -13,7 +13,6 @@ public class ItemSlotUI : MonoBehaviour
 
     private void Awake()
     {
-        rectTransform = GetComponent<RectTransform>();   
     }
 
     public TextMeshProUGUI NameText => nameText;
@@ -22,6 +21,7 @@ public class ItemSlotUI : MonoBehaviour
     public float Height => rectTransform.rect.height;
     public void SetData(ItemSlot itemSlot)
     {
+        rectTransform = GetComponent<RectTransform>();   
         nameText.text = itemSlot.Item.name;
         countText.text = $"X {itemSlot.Count}";
     }

@@ -7,18 +7,27 @@ public class NPCController : MonoBehaviour, Interactable
 {
     [SerializeField] Dialog dialog; //show dialog when talking to NPCs
     
+    [Header("Quests")]
+    [SerializeField] QuestBase questToStart; //start this quest if player interact with NPC
+    [SerializeField] QuestBase questToComplete; //complete the quest
+    
+    [Header("Movement")]
     [SerializeField] List<Vector2> movementPattern; //specify the pattern
-
     [SerializeField] float timeBetweenPattern; //set time between the pattern from inspector
 
     NPCState state;
     float idleTimer = 0f; //keep track the time when NPC walk
     int currentPattern = 0;
+    Quest activeQuest;
 
     Character character;
+    ItemGiver itemGiver;
+    PokemonGiver pokemonGiver;
     private void Awake()
     {
         character = GetComponent<Character>();
+        itemGiver = GetComponent<ItemGiver>();
+        pokemonGiver = GetComponent<PokemonGiver>();
     }
 
                         //the Transform of the Game Object that initiated the interaction. In this case, it's the transform of the player
@@ -30,8 +39,52 @@ public class NPCController : MonoBehaviour, Interactable
             state = NPCState.Dialog;
             character.LookTowards(initiator.position);
 
-            yield return DialogManager.Instance.ShowDialog(dialog);
-           
+            if (questToComplete != null)
+            {
+                var quest = new Quest(questToComplete);
+                yield return quest.CompleteQuest(initiator);
+                questToComplete = null;
+
+                Debug.Log($"{quest.Base.Name} completed!");
+            }
+            
+            if (itemGiver != null && itemGiver.CanBeGiven())
+            {
+                yield return itemGiver.GiveItem(initiator.GetComponent<PlayerController>());
+            }
+            else if (pokemonGiver != null && pokemonGiver.CanBeGiven())
+            {
+                yield return pokemonGiver.GivePokemon(initiator.GetComponent<PlayerController>());
+            }
+            else if (questToStart != null)
+            {
+                activeQuest = new Quest(questToStart);
+                yield return activeQuest.StartQuest();
+                questToStart = null;
+                
+                if (activeQuest.CanBeCompleted())
+                {
+                    yield return activeQuest.CompleteQuest(initiator);
+                    activeQuest = null;
+                }
+            }
+            else if (activeQuest != null)
+            {
+                if (activeQuest.CanBeCompleted())
+                {
+                    yield return activeQuest.CompleteQuest(initiator);
+                    activeQuest = null;
+                }
+                else
+                {
+                    yield return DialogManager.Instance.ShowDialog(activeQuest.Base.InProgressDialog);
+                }
+            }
+            else
+            {
+                yield return DialogManager.Instance.ShowDialog(dialog);
+            }
+            
             idleTimer = 0f; //set to 0 to not use any previously stored value
             state = NPCState.Idle;
             
