@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e1f629cd5cb1d64fbc764ea2168806e, type: 3}
+  m_Name: Weenett
+  m_EditorClassIdentifier: 
+  name: Weenett
+  description: 
+  frontSprite: {fileID: 21300000, guid: 83efe4d8164837141b3d9f5334b83acd, type: 3}
+  backSprite: {fileID: 21300000, guid: 0d99a7e6af1f33a438182f3844b6303e, type: 3}
+  type1: 12
+  type2: 14
+  maxHp: 64
+  attack: 103
+  defense: 56
+  spAttack: 57
+  spDefense: 75
+  speed: 68
+  expYield: 178
+  growthRate: 0
+  catchRate: 255
+  learnableMoves:
+  - moveBase: {fileID: 11400000, guid: c3fb68896a713b04a84cbbfb157a4e02, type: 2}
+    level: 10
+  - moveBase: {fileID: 11400000, guid: c748baebf81455a46ae4dbadab6f155a, type: 2}
+    level: 15
+  evolutions: []

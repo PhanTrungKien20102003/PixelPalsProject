@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e1f629cd5cb1d64fbc764ea2168806e, type: 3}
+  m_Name: Porypod
+  m_EditorClassIdentifier: 
+  name: Porypod
+  description: 
+  frontSprite: {fileID: 21300000, guid: 903e073346003c94bb4cc779ea495716, type: 3}
+  backSprite: {fileID: 21300000, guid: c503095b009adde46b7766f66ba95ced, type: 3}
+  type1: 1
+  type2: 12
+  maxHp: 73
+  attack: 40
+  defense: 66
+  spAttack: 78
+  spDefense: 71
+  speed: 40
+  expYield: 72
+  growthRate: 1
+  catchRate: 255
+  learnableMoves:
+  - moveBase: {fileID: 11400000, guid: 3f62e0aa3763a3047830b20accdd3c19, type: 2}
+    level: 6
+  evolutions: []

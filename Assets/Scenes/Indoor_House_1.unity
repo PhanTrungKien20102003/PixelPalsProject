@@ -1768,12 +1768,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pokemonToGive:
-    _base: {fileID: 11400000, guid: 684074dc7b12154468886b3d1d3dd2a3, type: 2}
-    level: 6
+    _base: {fileID: 11400000, guid: e43fa6820ea289348a9fcf8ebcdf143f, type: 2}
+    level: 5
   dialog:
     lines:
     - It's extremely dangerous for you to go explore without having a Pokemon!
-    - You can have this Piplup!
+    - You can have this Sablmander!
 --- !u!1001 &365371991
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10268,10 +10268,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildPokemons:
-  - _base: {fileID: 11400000, guid: fb0ef9c0f93ce374dab66acc589059ad, type: 2}
-    level: 5
-  - _base: {fileID: 11400000, guid: 02eae1035e8f9cb48a413fb017e8d001, type: 2}
-    level: 5
+  - _base: {fileID: 11400000, guid: b455ea3c73ca09f4aa0c711a38c605dc, type: 2}
+    level: 15
+  - _base: {fileID: 11400000, guid: 42df5b281d269014284936a0c5b5714b, type: 2}
+    level: 15
 --- !u!156049354 &1333938753
 Grid:
   m_ObjectHideFlags: 0

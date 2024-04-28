@@ -14,8 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Bug Bite
   description: 
-  type: 12
+  type: 0
   power: 60
   accuracy: 100
+  alwaysHit: 0
   pp: 20
+  priority: 0
+  category: 0
+  effects:
+    boosts: []
+    status: 0
+    volatileStatus: 0
+  secondary: []
+  target: 0
   isSpecial: 0

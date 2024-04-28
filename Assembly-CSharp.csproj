@@ -51,14 +51,17 @@
      <Compile Include="Assets\Scripts\Data\ConditionsDB.cs" />
      <Compile Include="Assets\Scripts\Core\Tilemap.cs" />
      <Compile Include="Assets\Scripts\Core\Fader.cs" />
+     <Compile Include="Assets\Scripts\Gameplay\EvolutionManager.cs" />
      <Compile Include="Assets\Scripts\Data\PokemonDB.cs" />
      <Compile Include="Assets\Scripts\Core\EssentialObjectsSpawner.cs" />
      <Compile Include="Assets\Scripts\Inventory\Pickup.cs" />
      <Compile Include="Assets\Scripts\Battle\PartyMemberUI.cs" />
+     <Compile Include="Assets\Scripts\Data\QuestDB.cs" />
      <Compile Include="Assets\Scripts\Data\MoveDB.cs" />
      <Compile Include="Assets\Scripts\Gameplay\GlobalSettings.cs" />
      <Compile Include="Assets\Scripts\Characters\TrainerController.cs" />
      <Compile Include="Assets\Scripts\Battle\MoveSelectionUI.cs" />
+     <Compile Include="Assets\Scripts\Util\ScriptableObjectDB.cs" />
      <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
      <Compile Include="Assets\Scripts\Inventory\UI\ItemSlotUI.cs" />
      <Compile Include="Assets\Scripts\Battle\BattleSystem.cs" />
@@ -76,6 +79,7 @@
      <Compile Include="Assets\Scripts\Battle\BattleHUD.cs" />
      <Compile Include="Assets\Scripts\Inventory\UI\InventoryUI.cs" />
      <Compile Include="Assets\Scripts\Gameplay\LongGrass.cs" />
+     <Compile Include="Assets\Scripts\Quests\QuestObject.cs" />
      <Compile Include="Assets\Scripts\Gameplay\GameLayers.cs" />
      <Compile Include="Assets\Scripts\Pokemons\PokemonParty.cs" />
      <Compile Include="Assets\Scripts\Battle\BattleDialogBox.cs" />
@@ -89,6 +93,7 @@
      <Compile Include="Assets\Scripts\Gameplay\MapArea.cs" />
      <Compile Include="Assets\Scripts\Core\EssentialObjects.cs" />
      <Compile Include="Assets\Scripts\Inventory\ItemBase.cs" />
+     <Compile Include="Assets\Scripts\Quests\QuestList.cs" />
      <Compile Include="Assets\Scripts\Gameplay\DialogManager.cs" />
      <Compile Include="Assets\Scripts\Inventory\ItemGiver.cs" />
      <Compile Include="Assets\Scripts\Characters\CharactersAnimator.cs" />
@@ -113,6 +118,7 @@
      <Folder Include="Assets\Scripts\Battle" />
      <Folder Include="Assets\Game\Resources\Quests" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+     <Folder Include="Assets\Game\Quests" />
      <Folder Include="Assets\TextMesh Pro\Resources\Fonts &amp; Materials" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />

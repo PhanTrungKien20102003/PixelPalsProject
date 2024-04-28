@@ -8,7 +8,7 @@ using UnityEngine;
     - Have a game controller inside which will store the GameState -- GameState = FreeRoam, Battle, etc.
         +) Depending upon the state, we will give the controller to either Player Controller or Battle System 
         => Both of them can't have the control at the same time. */
-public enum GameState { FreeRoam, Battle, Dialog, Menu, PartySlot, Bag, CutScene, Paused}
+public enum GameState { FreeRoam, Battle, Dialog, Menu, PartySlot, Bag, CutScene, Paused, Evolution}
 public class GameController : MonoBehaviour
 {
     //references for both Player and Battle
@@ -41,6 +41,7 @@ public class GameController : MonoBehaviour
         MoveDB.Init();
         ConditionsDB.Init();
         ItemDB.Init();
+        QuestDB.Init();
     }
 
     private void Start()
@@ -65,6 +66,9 @@ public class GameController : MonoBehaviour
             state = GameState.FreeRoam;
         };
         menuController.onMenuSelected += OnMenuSelected;
+
+        EvolutionManager.instance.OnStartEvolution += () => state = GameState.Evolution;
+        EvolutionManager.instance.OnCompleteEvolution += () => state = GameState.FreeRoam;
     }
 
     public void PauseGame(bool pause)
@@ -123,6 +127,9 @@ public class GameController : MonoBehaviour
         state = GameState.FreeRoam;
         battleSystem.gameObject.SetActive(false);
         worldCamera.gameObject.SetActive(true);
+
+        var playerParty = playerController.GetComponent<PokemonParty>();
+        StartCoroutine(playerParty.CheckForEvolutions());
     }
     private void Update()
     {

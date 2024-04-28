@@ -39,6 +39,7 @@ public class PokemonBase : ScriptableObject
     [SerializeField] List<LearnableMove> learnableMoves; /* I prefer using list than array although they almost like the same
                                                             but it comes with some more predefined functions which will be useful */
 
+    [SerializeField] List<Evolution> evolutions;
     public static int MaxNumOfMoves { get; set; } = 4;
     public int GetExpForLevel(int level)
     {
@@ -135,6 +136,8 @@ public class PokemonBase : ScriptableObject
     {
         get { return learnableMoves; }
     }
+    
+    public List<Evolution> Evolutions => evolutions;
     public int CatchRate => catchRate;
     
     public int ExpYield => expYield;
@@ -157,6 +160,16 @@ public class PokemonBase : ScriptableObject
         {
             get { return level; }
         }
+    }
+
+    [System.Serializable]
+    public class Evolution
+    {
+        [SerializeField] PokemonBase evolvesInto;
+        [SerializeField] int requiredLevel;
+
+        public PokemonBase EvolvesInto => evolvesInto;
+        public int RequiredLevel => requiredLevel;
     }
 
     public enum PokemonType /* Enum represents different types of Pok�mon. Each Pok�mon type is assigned a distinct constant value, 

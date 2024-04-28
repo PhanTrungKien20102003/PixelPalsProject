@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e1f629cd5cb1d64fbc764ea2168806e, type: 3}
+  m_Name: Darksaurus
+  m_EditorClassIdentifier: 
+  name: Darksaurus
+  description: 
+  frontSprite: {fileID: 21300000, guid: fca52fc4b0901c341931b1ab4b1e9bc0, type: 3}
+  backSprite: {fileID: 21300000, guid: e0a73b4d9b826a645822517cbd2f848c, type: 3}
+  type1: 16
+  type2: 8
+  maxHp: 66
+  attack: 71
+  defense: 72
+  spAttack: 116
+  spDefense: 86
+  speed: 81
+  expYield: 142
+  growthRate: 2
+  catchRate: 255
+  learnableMoves:
+  - moveBase: {fileID: 11400000, guid: 170780b6115f62948b3167681a5c7b56, type: 2}
+    level: 9
+  - moveBase: {fileID: 11400000, guid: 3f62e0aa3763a3047830b20accdd3c19, type: 2}
+    level: 10
+  - moveBase: {fileID: 11400000, guid: a616f8cb2af92ed4e8e06a096190431e, type: 2}
+    level: 16
+  evolutions: []

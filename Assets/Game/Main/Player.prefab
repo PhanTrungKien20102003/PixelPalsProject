@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 7210049760523891885}
   - component: {fileID: 607854481345702505}
   - component: {fileID: 3835990065149320610}
+  - component: {fileID: 5907965694999717931}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -192,12 +193,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pokemons:
-  - _base: {fileID: 11400000, guid: 02eae1035e8f9cb48a413fb017e8d001, type: 2}
-    level: 11
-  - _base: {fileID: 11400000, guid: 111eb21da6a5e9144866862bb93db719, type: 2}
+  - _base: {fileID: 11400000, guid: ac5a7e64e966e07458c131cae29a9919, type: 2}
     level: 9
-  - _base: {fileID: 11400000, guid: 93d8f8d20b6444e46a9c239be882eb19, type: 2}
-    level: 1
 --- !u!114 &7664994209284048494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,6 +272,18 @@ MonoBehaviour:
   pokeballSlots:
   - item: {fileID: 11400000, guid: 1673a72223fe1ca4193fbd832ee4380d, type: 2}
     count: 5
+--- !u!114 &5907965694999717931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387426903287274187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d65c1a0e8af0ed647b5c0b36a47a5fd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2686674340546627268
 GameObject:
   m_ObjectHideFlags: 0
