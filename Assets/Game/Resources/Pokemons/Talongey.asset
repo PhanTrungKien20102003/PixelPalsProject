@@ -34,4 +34,6 @@ MonoBehaviour:
     level: 1
   - moveBase: {fileID: 11400000, guid: bf0882c135187d247a5cca7f19c5cdac, type: 2}
     level: 5
-  evolutions: []
+  evolutions:
+  - evolvesInto: {fileID: 11400000, guid: 5a23b342b899656459c527dea15f3913, type: 2}
+    requiredLevel: 16

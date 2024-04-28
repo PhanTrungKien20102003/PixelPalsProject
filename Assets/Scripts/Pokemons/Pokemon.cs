@@ -133,8 +133,9 @@ public class Pokemon
         Stats.Add(Stat.SpAttack, Mathf.FloorToInt((Base.SpAttack * Level) / 100f) + 5);
         Stats.Add(Stat.SpDefense, Mathf.FloorToInt((Base.SpDefense * Level) / 100f) + 5);
         Stats.Add(Stat.Speed, Mathf.FloorToInt((Base.Speed * Level) / 100f) + 5);
-
+        
         MaxHp = Mathf.FloorToInt((2 * Base.MaxHp * Level) / 100f) + Level + 10;
+        
     }
 
     void ResetStatusBoost() //reset boost when battle is over
@@ -212,6 +213,7 @@ public class Pokemon
         if (Exp > Base.GetExpForLevel(level + 1))
         {
             level++;
+            CalculateStats();
             return true;
         }
         return false;
@@ -231,7 +233,7 @@ public class Pokemon
 
     public Evolution CheckForEvolution()
     {
-        return Base.Evolutions.FirstOrDefault(e => e.RequiredLevel == level);
+        return Base.Evolutions.FirstOrDefault(e => e.RequiredLevel <= level);
     }
 
     public void Evolve(Evolution evolution)

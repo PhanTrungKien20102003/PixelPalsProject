@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Route_1.unity
     guid: 1f99f32e3dfc5f346bbd93a8b1cfd5e0
   - enabled: 1
-    path: Assets/Scenes/Indoor_House_1.unity
+    path: Assets/Scenes/Indoor_House.unity
     guid: 4d18a96059901e0408da335139f3d422
   m_configObjects: {}

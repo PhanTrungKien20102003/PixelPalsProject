@@ -192,9 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14d351f2546ad2478631d59b316d9da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pokemons:
-  - _base: {fileID: 11400000, guid: ac5a7e64e966e07458c131cae29a9919, type: 2}
-    level: 9
+  pokemons: []
 --- !u!114 &7664994209284048494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,12 +264,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c2f3f048977c4e4dafdce2d445da6f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slots:
-  - item: {fileID: 11400000, guid: 3b5e32b10b3468446ae24e7497acb26c, type: 2}
-    count: 1
-  pokeballSlots:
-  - item: {fileID: 11400000, guid: 1673a72223fe1ca4193fbd832ee4380d, type: 2}
-    count: 5
+  slots: []
+  pokeballSlots: []
 --- !u!114 &5907965694999717931
 MonoBehaviour:
   m_ObjectHideFlags: 0
