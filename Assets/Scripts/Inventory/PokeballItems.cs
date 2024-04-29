@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Items/Create new Pokeball ")]
+[CreateAssetMenu(menuName = "Items/Create new Palball ")]
 public class PokeballItems : ItemBase
 {
     [SerializeField] private float catchRateModifier = 1;
