@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Antidote
   m_EditorClassIdentifier: 
   name: Antidote
-  description: Cure a Pokemon that has a Poison status
+  description: Cure a Pal that has a Poison status
   icon: {fileID: 21300000, guid: 696bc996f0aa2dd49866b4c003767b55, type: 3}
   hpAmount: 0
   restoreMaxHP: 0

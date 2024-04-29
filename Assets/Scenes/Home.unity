@@ -12542,7 +12542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1226050298760721227, guid: 41862a1043c727b4aab4581fd0d7716f, type: 3}
       propertyPath: dialog.lines.Array.data[0]
-      value: I bought some Pokeballs!
+      value: I bought some Palballs!
       objectReference: {fileID: 0}
     - target: {fileID: 1226050298760721227, guid: 41862a1043c727b4aab4581fd0d7716f, type: 3}
       propertyPath: dialog.lines.Array.data[1]
@@ -30043,6 +30043,10 @@ PrefabInstance:
     - target: {fileID: 6000283325520521316, guid: 6c4003336c9f70d4aa15fc1c9ed004a4, type: 3}
       propertyPath: m_Name
       value: Portal
+      objectReference: {fileID: 0}
+    - target: {fileID: 8915326578208051184, guid: 6c4003336c9f70d4aa15fc1c9ed004a4, type: 3}
+      propertyPath: sceneToLoad
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

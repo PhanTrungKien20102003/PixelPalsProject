@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Super Potion
   m_EditorClassIdentifier: 
   name: Super Potion
-  description: Restore health of a Pokemon by 50 points
+  description: Restore health of a Pal by 50 points
   icon: {fileID: 21300000, guid: a6c151f361f112641b677c01fc4dc28f, type: 3}
   hpAmount: 50
   restoreMaxHP: 0

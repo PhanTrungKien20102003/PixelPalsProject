@@ -1785,10 +1785,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonToGive:
     _base: {fileID: 11400000, guid: 3f793240b3546044c887148f321d50c8, type: 2}
-    level: 7
+    level: 14
   dialog:
     lines:
-    - It's extremely dangerous for you to go explore without having a Pokemon!
+    - It's extremely dangerous for you to go explore without having a Pal!
     - You can have this Darksaur!
 --- !u!1001 &365371991
 PrefabInstance:
@@ -1852,7 +1852,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8915326578208051184, guid: 6c4003336c9f70d4aa15fc1c9ed004a4, type: 3}
       propertyPath: sceneToLoad
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8915326578208051184, guid: 6c4003336c9f70d4aa15fc1c9ed004a4, type: 3}
       propertyPath: destinationPortal

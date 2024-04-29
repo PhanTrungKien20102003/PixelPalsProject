@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ether
   m_EditorClassIdentifier: 
   name: Ether
-  description: Recover the PP of a Pokemon by 10 points
+  description: Recover the PP of a Pal by 10 points
   icon: {fileID: 21300000, guid: 79859ce50ed6468418a6a3471a9cf8af, type: 3}
   hpAmount: 0
   restoreMaxHP: 0

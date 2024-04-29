@@ -48,7 +48,7 @@ public class PartySlot : MonoBehaviour
         
         UpdateMemberSelection(selection);
 
-        messageText.text = "Choose a Pokemon!";
+        messageText.text = "Choose a Pal!";
     }
     
     public void HandleUpdate(Action onSelected, Action onBack) //responsible for selecting pokemons

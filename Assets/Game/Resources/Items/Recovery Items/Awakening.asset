@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Awakening
   m_EditorClassIdentifier: 
   name: Awakening
-  description: Cure a Pokemon that has a Sleep status
+  description: Cure a Pal that has a Sleep status
   icon: {fileID: 21300000, guid: 9b6f1794a8a51f54c845ae8d76cbb8cf, type: 3}
   hpAmount: 0
   restoreMaxHP: 0

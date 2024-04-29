@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Potion
   m_EditorClassIdentifier: 
   name: Potion
-  description: Restore health of a Pokemon by 20 points
+  description: Restore health of a Pal by 20 points
   icon: {fileID: 21300000, guid: 2562ebe62dff3eb478d2fed6e106b1b3, type: 3}
   hpAmount: 20
   restoreMaxHP: 0

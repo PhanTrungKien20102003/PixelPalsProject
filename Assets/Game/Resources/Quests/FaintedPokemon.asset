@@ -17,10 +17,10 @@ MonoBehaviour:
   startDialog:
     lines:
     - Hello, can you help me please ?
-    - My pokemon has fainted, can you bring me a revive please ?
+    - My Pal has fainted, can you bring me a revive please ?
   inProgressDialog:
     lines:
-    - Please help my Pokemon!
+    - Please help my Pal!
   completeDialog:
     lines:
     - Thank you so much! You're a life saver!

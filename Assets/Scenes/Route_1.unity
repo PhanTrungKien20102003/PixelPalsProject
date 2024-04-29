@@ -10320,7 +10320,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4401350124794285423, guid: bd572b2db5af5de478f2deabf514f220, type: 3}
       propertyPath: pokemons.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4401350124794285423, guid: bd572b2db5af5de478f2deabf514f220, type: 3}
       propertyPath: pokemons.Array.data[0]._base
@@ -10328,6 +10328,14 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 42df5b281d269014284936a0c5b5714b, type: 2}
     - target: {fileID: 4401350124794285423, guid: bd572b2db5af5de478f2deabf514f220, type: 3}
       propertyPath: pokemons.Array.data[0].level
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4401350124794285423, guid: bd572b2db5af5de478f2deabf514f220, type: 3}
+      propertyPath: pokemons.Array.data[1]._base
+      value: 
+      objectReference: {fileID: 11400000, guid: fa20f4c410109fb43bb834f9d302a8c1, type: 2}
+    - target: {fileID: 4401350124794285423, guid: bd572b2db5af5de478f2deabf514f220, type: 3}
+      propertyPath: pokemons.Array.data[1].level
       value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -10349,7 +10357,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5766318869498130080, guid: 6c4003336c9f70d4aa15fc1c9ed004a4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -19
+      value: -19.5
       objectReference: {fileID: 0}
     - target: {fileID: 5766318869498130080, guid: 6c4003336c9f70d4aa15fc1c9ed004a4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10393,7 +10401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8915326578208051184, guid: 6c4003336c9f70d4aa15fc1c9ed004a4, type: 3}
       propertyPath: sceneToLoad
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10717,14 +10725,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wildPokemons:
   - _base: {fileID: 11400000, guid: b455ea3c73ca09f4aa0c711a38c605dc, type: 2}
-    level: 5
-  - _base: {fileID: 11400000, guid: 42df5b281d269014284936a0c5b5714b, type: 2}
-    level: 5
-  - _base: {fileID: 11400000, guid: 0bfcc11fdcbc15e49b728a43f3352f78, type: 2}
-    level: 5
-  - _base: {fileID: 11400000, guid: 5178f39af5f34314bb0f322347c2eb01, type: 2}
-    level: 5
-  - _base: {fileID: 11400000, guid: 7aad2613d15a54943bdc84bcffab168a, type: 2}
     level: 5
 --- !u!156049354 &1333938753
 Grid:

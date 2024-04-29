@@ -161,7 +161,7 @@ public class BattleSystem : MonoBehaviour
     {
         state = BattleState.Busy;
         yield return dialogBox.TypeDialog(
-            $"{trainer.Name} is about to use {newPokemon.Base.Name}. Do you want to switch Pokemon?");
+            $"{trainer.Name} is about to use {newPokemon.Base.Name}. Do you want to switch Pal?");
         
         state = BattleState.AboutToUse;
         dialogBox.EnableChoiceBox(true);
@@ -664,12 +664,12 @@ public class BattleSystem : MonoBehaviour
             var selectedMember = partySlot.SelectedMember;
             if (selectedMember.HP <= 0)
             {
-                partySlot.SetMessageText("You can't send out a fainted Pokemon!");
+                partySlot.SetMessageText("You can't send out a fainted Pal!");
                 return;
             } 
             if (selectedMember == playerUnit.Pokemon)
             {
-                partySlot.SetMessageText("Your Pokemon already in a battle!");
+                partySlot.SetMessageText("Your Pal already in a battle!");
                 return;
             }
 
@@ -693,7 +693,7 @@ public class BattleSystem : MonoBehaviour
         {
             if (playerUnit.Pokemon.HP <= 0)
             {   
-                partySlot.SetMessageText("You have to choose a Pokemon to continue!");
+                partySlot.SetMessageText("You have to choose a Pal to continue!");
                 return;
             }
             
@@ -791,7 +791,7 @@ public class BattleSystem : MonoBehaviour
 
         if (isTrainerBattle)
         {
-            yield return dialogBox.TypeDialog($"You can't catch other Pokemon!");
+            yield return dialogBox.TypeDialog($"You can't catch other Pal!");
             state = BattleState.RunningTurn;
             yield break;
         }

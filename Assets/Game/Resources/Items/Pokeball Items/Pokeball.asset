@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Pokeball
   m_EditorClassIdentifier: 
   name: Pokeball
-  description: A normal ball to catch Pokemons
+  description: A normal ball to catch Pals
   icon: {fileID: 21300000, guid: 5264a0972979be84891fc63a4e88bc3a, type: 3}
   catchRateModifier: 1

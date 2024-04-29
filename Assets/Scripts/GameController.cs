@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 /*State Design Pattern
@@ -137,7 +138,6 @@ public class GameController : MonoBehaviour
                                             otherwise, if the state is Battle, give the control to Battle System */
         {
             playerController.HandleUpdate();
-
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 menuController.OpenMenu();
@@ -145,17 +145,11 @@ public class GameController : MonoBehaviour
             }
         }
         else if (state == GameState.Battle)
-        {
             battleSystem.HandleUpdate();
-        }
         else if (state == GameState.Dialog) //disable player movement when talking to NPCs (show dialog)
-        {
             DialogManager.Instance.HandleUpdate();
-        }
         else if (state == GameState.Menu)
-        {
             menuController.HandleUpdate();
-        }
         else if (state == GameState.PartySlot)
         {
             Action onSelected = () =>
@@ -167,7 +161,6 @@ public class GameController : MonoBehaviour
                 partySlot.gameObject.SetActive(false);
                 state = GameState.FreeRoam;
             };
-            
             partySlot.HandleUpdate(onSelected, onBack);
         }
         else if (state == GameState.Bag)
@@ -206,7 +199,12 @@ public class GameController : MonoBehaviour
             SavingSystem.instance.Load("saveSlot1");
             state = GameState.FreeRoam;
         }
+        else if (selectedItem == 4)
+        {
+            //Exit
+            Application.Quit();
+        }
     }
-    
+
     public GameState State => state;
 }
